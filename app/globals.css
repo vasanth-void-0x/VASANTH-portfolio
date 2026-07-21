@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #05070a;
+  color: #e6f7ec;
+  font-family: var(--font-rajdhani), sans-serif;
+}
+
+::selection {
+  background: rgba(57, 255, 140, 0.3);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #05070a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#39ff8c, #00b4ff);
+  border-radius: 6px;
+}
+
+:focus-visible {
+  outline: 2px solid #39ff8c;
+  outline-offset: 3px;
+}
+
+/* Cyber grid backdrop */
+.bg-cyber-grid-fixed {
+  background-image: linear-gradient(rgba(57, 255, 140, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 140, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(12, 18, 24, 0.55);
+  border: 1px solid rgba(57, 255, 140, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  position: relative;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(57, 255, 140, 0.35), rgba(0, 180, 255, 0.15), rgba(168, 85, 247, 0.35));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* HUD corner brackets */
+.hud-corners {
+  position: relative;
+}
+.hud-corners::before,
+.hud-corners::after,
+.hud-corners > .corner-tr,
+.hud-corners > .corner-bl {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: #39ff8c;
+  opacity: 0.8;
+}
+.hud-corners::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.hud-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+.text-glow-green {
+  text-shadow: 0 0 12px rgba(57, 255, 140, 0.55);
+}
+.text-glow-blue {
+  text-shadow: 0 0 12px rgba(0, 180, 255, 0.55);
+}
+.text-glow-purple {
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.55);
+}
+
+.section-eyebrow {
+  font-family: var(--font-jetbrains), monospace;
+  letter-spacing: 0.35em;
+}
+
+/* scanning line inside HUD frames */
+.scanline-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.scanline-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    to bottom,
+    rgba(57, 255, 140, 0) 0%,
+    rgba(57, 255, 140, 0.12) 50%,
+    rgba(57, 255, 140, 0) 100%
+  );
+  animation: scan 4s linear infinite;
+}
