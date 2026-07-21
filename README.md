@@ -18,7 +18,7 @@ All three already have working placeholders in this project, so the site runs im
 | What | Path | Status |
 |---|---|---|
 | Profile photo | `public/profile.jpg` | ✅ Your uploaded photo is already here. Replace this file to change it — falls back to a "V" avatar automatically if the file is ever missing. |
-| Resume PDF | `public/Vasanth_Kumar_Resume.pdf` | ✅ Your uploaded resume is already here. Replace with a newer version any time; filename must stay the same (or update `resumePath` in `lib/data.ts`). |
+| Resume PDF | `public/` | ✅ Your uploaded resume is already here. Replace with a newer version any time; filename must stay the same (or update `resumePath` in `lib/data.ts`). |
 | Project screenshots | `public/projects/*.png` | ⚠️ Currently auto-generated placeholder graphics. Swap in real screenshots of each project using the exact filenames below. |
 
 Project screenshot filenames (drop your real screenshots in, same names):

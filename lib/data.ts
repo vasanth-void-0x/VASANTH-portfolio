@@ -7,7 +7,7 @@ export const profile = {
   phone: "+91 9786183898",
   github: "https://github.com/vasanth-void-0x",
   linkedin: "https://linkedin.com/in/vasanth-2k4",
-  resumePath: "/Vasanth_Kumar_Resume.pdf",
+  resumePath: "/Vasanth_Kumar_SOC_Analyst_Resume.pdf",
   summary:
     "Cybersecurity graduate with hands-on experience in SOC operations, SIEM monitoring, alert triage, threat hunting, incident response, and security automation through practical home labs and cybersecurity projects. Seeking an entry-level SOC Analyst, Security Analyst, or Cybersecurity Analyst role.",
 };
