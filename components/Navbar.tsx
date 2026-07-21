@@ -32,7 +32,7 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#hero" className="flex items-center gap-2 font-display text-sm tracking-widest text-neon">
           <Terminal size={18} className="text-neon" aria-hidden="true" />
-          VK<span className="text-white/40">_</span>SOC
+          VK<span className="text-white/40">_</span>VOID
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
