@@ -233,7 +233,7 @@ export const projects: Project[] = [
     description:
       "Implemented a GitHub Actions security gate that scans commits for leaked secrets, vulnerable code, dependencies, and container images, then generates an SBOM and blocks critical findings.",
     tools: ["GitHub Actions", "Gitleaks", "Semgrep", "Trivy", "Syft", "Docker", "Python"],
-    image: "/projects/chainguard-devsecops.png",
+    image: "/projects/chainguard-devsecops.jpg",
     github: "https://github.com/vasanth-void-0x/ChainGuard",
     caseStudy: {
       category: "DEVSECOPS / CI-CD SECURITY",
@@ -251,7 +251,7 @@ export const projects: Project[] = [
       mitre: ["Secure software supply-chain controls", "CWE-oriented static-analysis findings"],
       response: ["Fail the workflow when configured High or Critical findings are detected.", "Use scan evidence to remediate code or dependency risk before merge."],
       learnings: ["CI/CD security", "SAST", "Secret scanning", "Container scanning", "SBOM generation"],
-      evidence: [{ src: "/projects/chainguard-devsecops.png", caption: "ChainGuard automated DevSecOps security pipeline" }],
+      evidence: [{ src: "/projects/chainguard-devsecops.jpg", caption: "ChainGuard automated DevSecOps security pipeline" }],
     },
   },
   {
@@ -260,7 +260,7 @@ export const projects: Project[] = [
     description:
       "Designed an n8n-driven SOC workflow that receives security alerts, enriches and scores them, uses AI for analyst-ready context, and forwards structured events to the investigation workflow.",
     tools: ["n8n", "Webhooks", "Splunk", "Groq API", "REST APIs", "Security Automation"],
-    image: "/projects/aegisflow-soc-automation.png",
+    image: "/projects/aegisflow-soc-automation.jpg",
     caseStudy: {
       category: "SOAR / SECURITY AUTOMATION",
       objective: "Reduce repetitive Tier-1 triage work by connecting alert intake, normalization, enrichment, AI-assisted summarization, and analyst handoff.",
@@ -272,7 +272,7 @@ export const projects: Project[] = [
       mitre: ["MITRE ATT&CK mapping can be added when supported by incoming evidence"],
       response: ["Require analyst validation before containment.", "Record workflow failures and preserve original alert data for investigation."],
       learnings: ["n8n workflow design", "Webhook integration", "SOC automation", "Human-in-the-loop AI", "Splunk ingestion"],
-      evidence: [{ src: "/projects/aegisflow-soc-automation.png", caption: "AegisFlow AI-assisted SOC automation workflow" }],
+      evidence: [{ src: "/projects/aegisflow-soc-automation.jpg", caption: "AegisFlow AI-assisted SOC automation workflow" }],
     },
   },
 ];
