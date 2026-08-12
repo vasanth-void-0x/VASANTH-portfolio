@@ -126,7 +126,7 @@ export const projects: Project[] = [
     description:
       "Built an identity-focused SOC platform that normalizes Windows, Sysmon, Splunk, and Wazuh telemetry, detects attack patterns, correlates alerts, and applies policy-gated response workflows.",
     tools: ["Python", "Streamlit", "Splunk", "Wazuh", "Sysmon", "MITRE ATT&CK", "SQLite"],
-    image: "https://raw.githubusercontent.com/vasanth-void-0x/Identity-Threat-Response-Automation-Platform/main/assets/screenshots/demo_teaser.gif",
+    image: "/projects/320e4183-407d-4af5-97a5-143dffe60773.png",
     github: "https://github.com/vasanth-void-0x/Identity-Threat-Response-Automation-Platform",
     caseStudy: {
       category: "SOC DETECTION & RESPONSE",
@@ -152,7 +152,10 @@ export const projects: Project[] = [
         "Protect allowlisted users, hosts, and networks from automated response."
       ],
       learnings: ["Detection engineering", "Log normalization", "Alert correlation", "MITRE-driven investigation", "Safe response automation"],
-      evidence: [{ src: "https://raw.githubusercontent.com/vasanth-void-0x/Identity-Threat-Response-Automation-Platform/main/assets/screenshots/demo_teaser.gif", caption: "iTRAP SOC command-center workflow" }],
+      evidence: [
+        { src: "/projects/320e4183-407d-4af5-97a5-143dffe60773.png", caption: "iTRAP operational overview and attack map" },
+        { src: "/projects/66bc4272-84be-4edf-b81b-6c38156c881d.png", caption: "Splunk connection and Wazuh integration settings" },
+      ],
     },
   },
   {
@@ -161,7 +164,7 @@ export const projects: Project[] = [
     description:
       "Created a security decision layer that evaluates AI-agent prompts and proposed tool actions for prompt injection, sensitive-data exposure, excessive permissions, and unsafe execution.",
     tools: ["TypeScript", "Cloudflare Workers", "Cloudflare D1", "Groq API", "OWASP Agentic", "MITRE ATLAS"],
-    image: "https://raw.githubusercontent.com/vasanth-void-0x/AgentShield---AI-Gateway/main/docs/screenshots/overview-dashboard.png",
+    image: "/projects/d31d894a-2024-47e5-9cc3-b0a0f3625d68.png",
     github: "https://github.com/vasanth-void-0x/AgentShield---AI-Gateway",
     demo: "https://agent-shield.iamvasanth2k4.workers.dev/",
     caseStudy: {
@@ -184,7 +187,10 @@ export const projects: Project[] = [
       mitre: ["MITRE ATLAS — Prompt manipulation and unsafe model interaction", "OWASP Agentic — Goal hijacking, tool misuse, excessive permissions"],
       response: ["Allow low-risk actions.", "Pause ambiguous or high-impact actions for human approval.", "Block high-risk requests and retain an audit record."],
       learnings: ["Agentic AI threat modeling", "Hybrid detection", "Human-in-the-loop controls", "Edge deployment", "Security audit design"],
-      evidence: [{ src: "https://raw.githubusercontent.com/vasanth-void-0x/AgentShield---AI-Gateway/main/docs/screenshots/overview-dashboard.png", caption: "AgentShield security operations overview" }],
+      evidence: [
+        { src: "/projects/d31d894a-2024-47e5-9cc3-b0a0f3625d68.png", caption: "AgentShield security operations overview" },
+        { src: "/projects/a4cc7b20-1ca0-4224-8273-e79836138c62.png", caption: "Prompt-injection request scored 100/100 and blocked" },
+      ],
     },
   },
   {
@@ -193,7 +199,7 @@ export const projects: Project[] = [
     description:
       "Developed a local-first Windows forensic workbench that preserves evidence, verifies SHA-256 integrity, reconstructs timelines, correlates artifacts, and produces evidence-cited assistance and reports.",
     tools: ["Python", "PySide6", "YARA-X", "Windows EVTX", "SHA-256", "Groq API", "PDF Reporting"],
-    image: "https://raw.githubusercontent.com/vasanth-void-0x/DFIR-Copilot/main/Screenshots/evidence.png",
+    image: "/projects/51b9f6b7-db37-47fa-bcd1-aca30fa606ec.png",
     github: "https://github.com/vasanth-void-0x/DFIR-Copilot",
     caseStudy: {
       category: "DIGITAL FORENSICS & INCIDENT RESPONSE",
@@ -215,7 +221,10 @@ export const projects: Project[] = [
       mitre: ["T1059.001 — PowerShell", "T1070 — Indicator Removal", "MITRE ATT&CK mappings attached only to supported findings"],
       response: ["Preserve original evidence unchanged.", "Report findings with artifact IDs and examiner warnings.", "Export PDF, HTML, and JSON case records."],
       learnings: ["Evidence integrity", "Chain of custody", "Timeline reconstruction", "YARA-X", "Evidence-grounded AI"],
-      evidence: [{ src: "https://raw.githubusercontent.com/vasanth-void-0x/DFIR-Copilot/main/Screenshots/evidence.png", caption: "DFIR Copilot evidence and case management" }],
+      evidence: [
+        { src: "/projects/51b9f6b7-db37-47fa-bcd1-aca30fa606ec.png", caption: "Evidence-grounded AI Copilot investigation" },
+        { src: "/projects/8a29bf8a-e4c2-4e5d-9064-de43469c8115.png", caption: "Deleted-file evidence and supported findings" },
+      ],
     },
   },
   {
