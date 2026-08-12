@@ -17,8 +17,8 @@ export default function ProjectCard({ project, index, onCaseStudy }: { project: 
         <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-white/65">{project.description}</p>
         <div className="mt-4 flex flex-wrap gap-2">{project.tools.map((tool) => <span key={tool} className="project-tool-badge rounded-full border border-volt/30 bg-white/[0.03] px-2.5 py-1 font-mono text-[10px] text-volt/90">{tool}</span>)}</div>
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          <a href={project.github} target="_blank" rel="noopener noreferrer" className="lightning-blue-btn flex items-center justify-center gap-2 rounded-sm border py-2.5 font-mono text-[11px] uppercase tracking-widest"><Github size={14} /> GitHub</a>
-          <button type="button" onClick={() => onCaseStudy(project)} className="lightning-purple-btn flex items-center justify-center gap-2 rounded-sm border py-2.5 font-mono text-[11px] uppercase tracking-widest"><Zap size={14} /> View Case Study</button>
+          {project.github ? <a href={project.github} target="_blank" rel="noopener noreferrer" className="lightning-blue-btn flex items-center justify-center gap-2 rounded-sm border py-2.5 font-mono text-[11px] uppercase tracking-widest"><Github size={14} /> GitHub</a> : <div className="flex items-center justify-center rounded-sm border border-white/10 py-2.5 font-mono text-[11px] uppercase tracking-widest text-white/35"><Terminal size={14} className="mr-2" /> Workflow</div>}
+          {project.demo ? <a href={project.demo} target="_blank" rel="noopener noreferrer" className="lightning-purple-btn flex items-center justify-center gap-2 rounded-sm border py-2.5 font-mono text-[11px] uppercase tracking-widest"><Zap size={14} /> Live Demo</a> : <button type="button" onClick={() => onCaseStudy(project)} className="lightning-purple-btn flex items-center justify-center gap-2 rounded-sm border py-2.5 font-mono text-[11px] uppercase tracking-widest"><Zap size={14} /> View Case Study</button>}
         </div>
       </div>
     </motion.div>
