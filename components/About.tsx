@@ -18,27 +18,7 @@ export default function About() {
     <section id="about" className="relative mx-auto max-w-6xl px-6 py-28">
       <SectionHeading eyebrow="// IDENTITY_FILE" title="About the Operative" accent="volt" />
 
-      <motion.div
-        initial={{ opacity: 0, y: 24, scale: 0.985 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.8 }}
-        className="relative isolate mb-10 overflow-hidden rounded-2xl border border-neon/20 bg-[#020706]/75 shadow-[0_22px_70px_rgba(0,0,0,0.42),0_0_34px_rgba(57,255,140,0.08)] max-sm:-mx-2 max-sm:rounded-xl"
-      >
-        <div className="pointer-events-none absolute left-2.5 top-2.5 z-10 h-12 w-12 border-l-2 border-t-2 border-neon/80" aria-hidden="true" />
-        <div className="pointer-events-none absolute bottom-2.5 right-2.5 z-10 h-12 w-12 border-b-2 border-r-2 border-neon/80" aria-hidden="true" />
-        <Image
-          src="/assets/vasanth-security-core.webp"
-          alt="Vasanth security core connecting SOC Operations, AI Security, Cybersecurity and Security Automation"
-          width={1680}
-          height={945}
-          sizes="(max-width: 768px) 100vw, 1152px"
-          className="h-auto w-full object-contain"
-          priority={false}
-        />
-      </motion.div>
-
-      <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+      <div className="grid gap-8 lg:grid-cols-[0.95fr_1.25fr] lg:items-stretch">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -61,8 +41,8 @@ export default function About() {
               <span className="font-mono text-xs uppercase tracking-[0.18em] text-white/50 sm:text-sm">
                 Target roles
               </span>
-              <span className="font-display text-base font-semibold tracking-wide text-white/90 sm:text-lg">
-                SOC Analyst · Security Analyst · Cybersecurity Analyst
+              <span className="font-display text-base font-semibold tracking-wide text-neon text-glow-green sm:text-lg">
+                SOC Analyst · Security Analyst · AI Security Trainee
               </span>
             </div>
             <div className="flex flex-wrap items-center gap-3">
@@ -77,7 +57,28 @@ export default function About() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, x: 30, scale: 0.985 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8 }}
+          className="relative isolate flex min-h-[360px] items-center overflow-hidden rounded-2xl border border-neon/20 bg-[#020706]/75 shadow-[0_22px_70px_rgba(0,0,0,0.42),0_0_34px_rgba(57,255,140,0.08)] max-sm:-mx-2 max-sm:min-h-0 max-sm:rounded-xl"
+        >
+          <div className="pointer-events-none absolute left-2.5 top-2.5 z-10 h-12 w-12 border-l-2 border-t-2 border-neon/80" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-2.5 right-2.5 z-10 h-12 w-12 border-b-2 border-r-2 border-neon/80" aria-hidden="true" />
+          <Image
+            src="/assets/vasanth-security-core.webp"
+            alt="Vasanth security core connecting SOC Operations, AI Security, Cybersecurity and Security Automation"
+            width={1680}
+            height={945}
+            sizes="(max-width: 1024px) 100vw, 640px"
+            className="h-auto w-full object-contain"
+            priority={false}
+          />
+        </motion.div>
+      </div>
+
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {readouts.map((item, i) => (
             <motion.div
               key={item.label}
@@ -94,7 +95,6 @@ export default function About() {
               <p className="mt-1 font-display text-sm font-semibold text-white">{item.value}</p>
             </motion.div>
           ))}
-        </div>
       </div>
     </section>
   );
