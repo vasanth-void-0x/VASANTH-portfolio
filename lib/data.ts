@@ -329,15 +329,23 @@ export const education = [
 
 export const certifications = [
   {
-    name: "TryHackMe – SOC Level 1 Path",
-    status: "In Progress",
+    name: "Cisco Junior Cybersecurity Career Path",
+    provider: "Cisco Networking Academy",
+    type: "Career Path Training",
   },
   {
-    name: "TryHackMe – Jr. Penetration Tester Path",
-    status: "In Progress",
+    name: "Google Security Operations",
+    provider: "Google",
+    type: "Security Operations Training",
   },
   {
     name: "Microsoft Student SOC Program Foundations",
-    status: "Completed",
+    provider: "Microsoft",
+    type: "SOC Foundations Training",
+  },
+  {
+    name: "TryHackMe – SOC Level 1 Path",
+    provider: "TryHackMe",
+    type: "Hands-on Learning Path",
   },
 ];

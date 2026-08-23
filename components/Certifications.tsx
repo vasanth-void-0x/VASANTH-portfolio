@@ -1,33 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, BookOpenCheck, GraduationCap, ShieldCheck } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import { certifications } from "@/lib/data";
 
 export default function Certifications() {
+  const icons = [ShieldCheck, BookOpenCheck, BadgeCheck, GraduationCap];
+
   return (
     <section id="certifications" className="relative overflow-hidden">
       <div className="relative z-10 mx-auto max-w-5xl px-6 py-28">
-      <SectionHeading eyebrow="// CLEARANCE_BADGES" title="Certifications" accent="neon" />
+      <SectionHeading eyebrow="// VERIFIED_LEARNING" title="Certifications & Training" accent="neon" />
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {certifications.map((cert, i) => (
-          <motion.div
-            key={cert.name}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="glass-card hud-corners flex flex-col items-center rounded-lg p-7 text-center"
-          >
-            <BadgeCheck className="mb-4 text-neon" size={32} />
-            <h3 className="font-display text-sm font-semibold text-white">{cert.name}</h3>
-            <span className="mt-3 rounded-full border border-neon/40 bg-neon/5 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-neon">
-              {cert.status}
-            </span>
-          </motion.div>
-        ))}
+      <div className="cert-training-grid">
+        {certifications.map((cert, i) => {
+          const Icon = icons[i] ?? BadgeCheck;
+          return (
+            <motion.article
+              key={cert.name}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="cert-training-item"
+            >
+              <div className="cert-training-icon"><Icon size={26} strokeWidth={1.5} /></div>
+              <div>
+                <span>{cert.provider}</span>
+                <h3>{cert.name}</h3>
+                <p>{cert.type}</p>
+              </div>
+            </motion.article>
+          );
+        })}
       </div>
       </div>
     </section>
