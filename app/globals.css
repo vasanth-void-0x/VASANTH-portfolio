@@ -824,6 +824,157 @@ body {
 .project-experience-mini strong { display: block; margin-top: .45rem; font-size: .76rem; line-height: 1.35; color: rgba(255,255,255,.8); }
 .project-experience-mini small { display: block; margin-top: .5rem; font-family: var(--font-jetbrains), monospace; font-size: 8px; line-height: 1.5; color: rgba(255,255,255,.35); }
 
+/* Experience journey — open layout, no card containers */
+.experience-timeline {
+  position: relative;
+  margin-top: 1rem;
+}
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  top: 2.5rem;
+  bottom: 2.5rem;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(57,255,140,.48) 8%, rgba(0,223,255,.25) 50%, rgba(57,255,140,.48) 92%, transparent);
+  box-shadow: 0 0 16px rgba(57,255,140,.22);
+}
+.experience-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 72px minmax(0,1fr);
+  align-items: center;
+  min-height: 330px;
+  padding: 2.2rem 0;
+}
+.experience-side { min-width: 0; }
+.experience-side-left { padding-right: 2.8rem; }
+.experience-side-right { padding-left: 2.8rem; }
+.experience-axis {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: auto;
+  border: 1px solid rgba(57,255,140,.5);
+  border-radius: 50%;
+  background: #06100c;
+  box-shadow: 0 0 0 7px rgba(57,255,140,.035), 0 0 22px rgba(57,255,140,.2);
+}
+.experience-axis span {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #39ff8c;
+}
+.experience-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 190px;
+  height: 190px;
+  margin: auto;
+  color: #39ff8c;
+  filter: drop-shadow(0 0 14px rgba(57,255,140,.22));
+}
+.experience-visual::before,
+.experience-visual::after {
+  content: "";
+  position: absolute;
+  width: 72%;
+  height: 72%;
+  border: 1px solid rgba(57,255,140,.22);
+  transform: rotate(45deg);
+}
+.experience-visual::after {
+  width: 52%;
+  height: 52%;
+  border-style: dashed;
+  animation: experienceSpin 18s linear infinite reverse;
+}
+.experience-visual-ring {
+  position: absolute;
+  inset: 11px;
+  border: 1px dashed rgba(0,223,255,.2);
+  border-radius: 50%;
+  animation: experienceSpin 22s linear infinite;
+}
+.experience-visual svg { position: relative; z-index: 2; }
+.experience-visual strong {
+  position: absolute;
+  z-index: 2;
+  bottom: 35px;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 9px;
+  letter-spacing: .25em;
+  color: rgba(216,255,232,.7);
+}
+.experience-content { max-width: 510px; }
+.experience-kicker {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: rgba(57,255,140,.65);
+}
+.experience-content h3 {
+  margin-top: .65rem;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: clamp(1.25rem,2vw,1.65rem);
+  font-weight: 650;
+  color: #fff;
+}
+.experience-description {
+  margin-top: .9rem;
+  font-size: .86rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,.58);
+}
+.experience-workflow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem;
+  margin-top: 1.15rem;
+  font-family: var(--font-jetbrains), monospace;
+}
+.experience-workflow span { display: inline-flex; align-items: center; gap: .35rem; }
+.experience-workflow b {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: rgba(216,255,232,.78);
+}
+.experience-workflow i { color: #39ff8c; font-style: normal; text-shadow: 0 0 8px rgba(57,255,140,.7); }
+.experience-evidence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: 1rem 0;
+}
+.experience-evidence span {
+  border-left: 2px solid rgba(57,255,140,.6);
+  padding: .25rem .55rem;
+  background: linear-gradient(90deg,rgba(57,255,140,.06),transparent);
+  font-size: .68rem;
+  color: rgba(255,255,255,.6);
+}
+@keyframes experienceSpin { to { transform: rotate(360deg); } }
+
+@media (max-width: 767px) {
+  .experience-timeline::before { left: 20px; }
+  .experience-row { grid-template-columns: 42px minmax(0,1fr); min-height: 0; padding: 2.5rem 0; }
+  .experience-axis { grid-column: 1; grid-row: 1; width: 34px; height: 34px; }
+  .experience-side-left,
+  .experience-side-right { grid-column: 2; padding: 0 0 0 1.25rem; }
+  .experience-side:has(.experience-visual) { display: none; }
+  .experience-side:has(.experience-content) { grid-row: 1; }
+  .experience-content h3 { font-size: 1.25rem; }
+  .experience-description { font-size: .8rem; }
+}
+
 .toolchain-map {
   display: flex;
   align-items: stretch;

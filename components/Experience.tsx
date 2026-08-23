@@ -1,47 +1,60 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Activity, Bug, FileSearch, Radar, ShieldCheck } from "lucide-react";
+import { Activity, BrainCircuit, Bug, FileSearch, Radar } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import ToolchainMap from "./ToolchainMap";
-import { projects } from "@/lib/data";
 
-const cards = [
+const experiences = [
+  {
+    title: "SOC Operations Experience",
+    subtitle: "MONITORING • TRIAGE • ESCALATION",
+    description: "Hands-on SOC practice using security telemetry to validate alerts, correlate events, investigate suspicious activity, and prepare analyst-ready escalations.",
+    workflow: ["Logs", "SIEM", "Alert", "Investigate", "Escalate"],
+    evidence: ["SIEM monitoring", "Log correlation", "Incident triage"],
+    tools: ["Splunk", "Wazuh", "Sysmon", "Windows Event Logs"],
+    icon: Activity,
+    code: "SOC",
+  },
   {
     title: "Threat Hunting Experience",
-    subtitle: "THREAT INTELLIGENCE • IOC INVESTIGATION",
-    description: "Hands-on threat-hunting practice focused on investigating suspicious indicators, enriching IOC context, and connecting findings to analyst workflows.",
-    points: ["IOC investigation & enrichment", "IP/domain reputation analysis", "MITRE ATT&CK mapping"],
-    tools: ["Python", "VirusTotal API", "GeoIP API", "MITRE ATT&CK"],
-    badge: "HANDS-ON EXPERIENCE",
+    subtitle: "IOC • ENRICHMENT • CORRELATION",
+    description: "Investigation practice focused on suspicious indicators, reputation intelligence, geographic context, and evidence-led threat decisions.",
+    workflow: ["IOC", "Enrich", "Correlate", "Hunt", "Decide"],
+    evidence: ["IOC investigation", "Reputation analysis", "MITRE mapping"],
+    tools: ["VirusTotal", "GeoIP API", "MITRE ATT&CK", "Python"],
     icon: Radar,
+    code: "HUNT",
   },
   {
-    title: "Cybersecurity Home Lab",
-    subtitle: "SOC OPERATIONS • MONITORING • TRIAGE",
-    description: "Practical SOC environment used to practice security telemetry, SIEM monitoring, alert triage, log analysis, and incident investigation.",
-    points: ["SIEM monitoring & log correlation", "Alert triage and investigation", "SOC escalation workflow"],
-    tools: ["Splunk", "Sysmon", "Windows Event Logs", "Kali Linux"],
-    badge: "SOC HOME LAB",
-    icon: Activity,
-  },
-  {
-    title: "Penetration Testing Lab",
-    subtitle: "RECON • ENUMERATION • VULNERABILITY ASSESSMENT",
-    description: "Authorized lab practice covering network reconnaissance, service enumeration, web testing, vulnerability assessment, and findings documentation.",
-    points: ["Network reconnaissance", "Service & web enumeration", "Controlled vulnerability testing"],
-    tools: ["Kali Linux", "Nmap", "Nikto", "Burp Suite", "Metasploit"],
-    badge: "PRACTICAL LAB",
+    title: "VAPT & Penetration Testing Lab",
+    subtitle: "RECON • ENUMERATION • VALIDATION",
+    description: "Authorized lab testing across network and web targets, from reconnaissance and service discovery through controlled validation and reporting.",
+    workflow: ["Recon", "Scan", "Enumerate", "Validate", "Report"],
+    evidence: ["Network recon", "Web enumeration", "Finding validation"],
+    tools: ["Nmap", "Burp Suite", "Nikto", "Metasploit", "Kali Linux"],
     icon: Bug,
+    code: "VAPT",
   },
   {
-    title: "Digital Forensics Practice",
-    subtitle: "EVIDENCE • ARTIFACT ANALYSIS • INVESTIGATION",
-    description: "Forensics practice using simulated investigation scenarios to examine evidence, identify artifacts, and document defensible findings.",
-    points: ["Evidence acquisition concepts", "Disk/image & artifact analysis", "Investigation documentation"],
-    tools: ["FTK Imager", "Autopsy", "File System Analysis"],
-    badge: "FORENSICS LAB",
+    title: "Digital Forensics & Incident Response",
+    subtitle: "EVIDENCE • ANALYSIS • TIMELINE",
+    description: "Simulated forensic investigations covering evidence handling, integrity verification, artifact examination, timeline reconstruction, and defensible reporting.",
+    workflow: ["Acquire", "Hash", "Analyze", "Timeline", "Report"],
+    evidence: ["Evidence integrity", "Artifact analysis", "Timeline reconstruction"],
+    tools: ["FTK Imager", "Autopsy", "YARA", "CyberChef"],
     icon: FileSearch,
+    code: "DFIR",
+  },
+  {
+    title: "AI Security Experience",
+    subtitle: "LLM • RAG • MCP • AGENTIC AI",
+    description: "Practical AI security testing across retrieval pipelines and agentic systems, including prompt injection, document poisoning, data leakage, and tool misuse.",
+    workflow: ["Target", "Test", "Detect", "Review", "Protect"],
+    evidence: ["RAG security", "Prompt testing", "Agent guardrails"],
+    tools: ["RAGExploit", "AgentShield", "AI Red Team", "MITRE ATLAS"],
+    icon: BrainCircuit,
+    code: "AI SEC",
   },
 ];
 
@@ -51,63 +64,59 @@ export default function Experience() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-28">
         <SectionHeading eyebrow="// SECURITY_OPERATIONS_RECORD" title="Hands-on Security Experience" accent="volt" />
 
-        <div className="grid gap-5 md:grid-cols-2">
-          {cards.map((item, i) => {
+        <div className="experience-timeline">
+          {experiences.map((item, index) => {
             const Icon = item.icon;
-            return (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.45, delay: i * 0.07 }}
-                className="experience-card"
+            const visualFirst = index % 2 === 0;
+            const visual = (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.86 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5 }}
+                className="experience-visual"
+                aria-hidden="true"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="font-mono text-[9px] tracking-[.24em] text-neon/65">0{i + 1} // {item.subtitle}</p>
-                    <h3 className="mt-2 font-display text-lg font-semibold text-white">{item.title}</h3>
-                  </div>
-                  <div className="experience-icon"><Icon size={20} /></div>
+                <span className="experience-visual-ring" />
+                <Icon size={58} strokeWidth={1.25} />
+                <strong>{item.code}</strong>
+              </motion.div>
+            );
+            const content = (
+              <motion.div
+                initial={{ opacity: 0, x: visualFirst ? 24 : -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5 }}
+                className="experience-content"
+              >
+                <p className="experience-kicker">0{index + 1} // {item.subtitle}</p>
+                <h3>{item.title}</h3>
+                <p className="experience-description">{item.description}</p>
+                <div className="experience-workflow" aria-label={`${item.title} workflow`}>
+                  {item.workflow.map((step, stepIndex) => (
+                    <span key={step}>
+                      <b>{step}</b>
+                      {stepIndex < item.workflow.length - 1 && <i aria-hidden="true">›</i>}
+                    </span>
+                  ))}
                 </div>
+                <div className="experience-evidence">
+                  {item.evidence.map((point) => <span key={point}>{point}</span>)}
+                </div>
+                <ToolchainMap tools={item.tools} />
+              </motion.div>
+            );
 
-                <p className="mt-4 text-sm leading-6 text-white/62">{item.description}</p>
-                <div className="mt-5"><ToolchainMap tools={item.tools} /></div>
-
-                <ul className="mt-5 grid gap-2 sm:grid-cols-3">
-                  {item.points.map((point) => <li key={point} className="experience-point">{point}</li>)}
-                </ul>
-                <span className="experience-badge">{item.badge}</span>
-              </motion.article>
+            return (
+              <article className="experience-row" key={item.title}>
+                <div className="experience-side experience-side-left">{visualFirst ? visual : content}</div>
+                <div className="experience-axis" aria-hidden="true"><span>{String(index + 1).padStart(2, "0")}</span></div>
+                <div className="experience-side experience-side-right">{visualFirst ? content : visual}</div>
+              </article>
             );
           })}
         </div>
-
-        <motion.article
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          className="experience-card experience-project-card mt-5"
-        >
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <p className="font-mono text-[9px] tracking-[.24em] text-signal">05 // PROJECT-BASED EXPERIENCE</p>
-              <h3 className="mt-2 font-display text-xl font-semibold text-white">5 Hands-on Cybersecurity Projects</h3>
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-white/62">Applied threat hunting, SOC monitoring, incident triage, AI-assisted analysis, phishing investigation, and security automation concepts through practical projects.</p>
-            </div>
-            <div className="experience-icon experience-icon-purple"><ShieldCheck size={21} /></div>
-          </div>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {projects.slice(0, 5).map((project, index) => (
-              <div key={project.id} className="project-experience-mini">
-                <span>0{index + 1}</span>
-                <strong>{project.title}</strong>
-                <small>{project.tools.slice(0, 3).join(" • ")}</small>
-              </div>
-            ))}
-          </div>
-          <span className="experience-badge experience-badge-purple">PROJECT-BASED EXPERIENCE</span>
-        </motion.article>
       </div>
     </section>
   );
