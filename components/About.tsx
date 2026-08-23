@@ -62,9 +62,13 @@ export default function About() {
               <Crosshair className="mt-1 shrink-0 text-neon drop-shadow-[0_0_8px_rgba(57,255,140,0.65)]" size={24} />
               <div>
                 <p className="font-mono text-[9px] uppercase tracking-[0.24em] text-white/45">Target roles</p>
-                <p className="mt-2 font-display text-lg font-semibold leading-relaxed tracking-wide text-white sm:text-xl">
-                  SOC Analyst <span className="text-neon">•</span> Security Analyst <span className="text-neon">•</span> AI Security Trainee
-                </p>
+                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-display text-lg font-semibold leading-relaxed tracking-wide text-white sm:text-xl">
+                  <span className="whitespace-nowrap">SOC Analyst</span>
+                  <span className="text-neon">•</span>
+                  <span className="whitespace-nowrap">Security Analyst</span>
+                  <span className="text-neon">•</span>
+                  <span className="whitespace-nowrap">AI Security Trainee</span>
+                </div>
               </div>
             </div>
             <div className="mt-5 flex items-start gap-4 border-t border-neon/10 pt-5">
