@@ -477,11 +477,11 @@ body {
 
 /* Reference-matched raster processor replaces the simplified CSS illustration. */
 .hero-ai-chip {
-  left: 1.8%;
-  top: 12.5%;
+  left: .8%;
+  top: 10.8%;
   z-index: 5;
-  width: 238px;
-  height: 174px;
+  width: 270px;
+  height: 180px;
   filter: none;
 }
 
@@ -490,11 +490,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: .9;
+  opacity: .88;
   mix-blend-mode: normal;
   filter: saturate(1.08) contrast(1.16) brightness(.92) drop-shadow(0 0 12px rgba(57,255,140,.34));
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0,0,0,.96) 62%, transparent 94%);
-  mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0,0,0,.96) 62%, transparent 94%);
+  -webkit-mask-image: none;
+  mask-image: none;
   animation: heroAiImagePulse 3.4s ease-in-out infinite;
 }
 
