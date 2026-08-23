@@ -28,7 +28,7 @@ export default function About() {
         <div className="pointer-events-none absolute left-2.5 top-2.5 z-10 h-12 w-12 border-l-2 border-t-2 border-neon/80" aria-hidden="true" />
         <div className="pointer-events-none absolute bottom-2.5 right-2.5 z-10 h-12 w-12 border-b-2 border-r-2 border-neon/80" aria-hidden="true" />
         <Image
-          src="/assets/vasanth-security-core.png"
+          src="/assets/vasanth-security-core.webp"
           alt="Vasanth security core connecting SOC Operations, AI Security, Cybersecurity and Security Automation"
           width={1680}
           height={945}
