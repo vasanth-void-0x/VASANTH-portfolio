@@ -1,4 +1,4 @@
-"use client";
+"use client";\n\n// Project showcase: 6 cybersecurity builds + 3 AI security builds.
 
 import { useMemo, useState } from "react";
 import SectionHeading from "./SectionHeading";
