@@ -134,15 +134,15 @@ const categoryById: Record<string, Exclude<ProjectFilter, "All">> = {
 
 const currentById = Object.fromEntries(projects.map((project) => [project.id, project]));
 const allProjects: Project[] = [
+  ...additionalProjects.filter((project) => project.id === "ragexploit"),
+  ...additionalProjects.filter((project) => project.id === "ai-red-team-agent"),
+  currentById["agent-shield"],
   currentById.itrap,
   currentById["aegis-flow"],
   currentById["dfir-copilot"],
   currentById["chain-guard"],
   ...additionalProjects.filter((project) => project.id === "soc-alert-escalation"),
   ...additionalProjects.filter((project) => project.id === "threat-hunting-dashboard"),
-  currentById["agent-shield"],
-  ...additionalProjects.filter((project) => project.id === "ragexploit"),
-  ...additionalProjects.filter((project) => project.id === "ai-red-team-agent"),
 ].filter(Boolean) as Project[];
 
 const filters: ProjectFilter[] = ["All", "Cybersecurity", "AI Security"];
@@ -167,7 +167,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-28">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-24">
         <SectionHeading eyebrow="// DEPLOYED_BUILDS" title="Security Projects" accent="neon" />
 
         <div

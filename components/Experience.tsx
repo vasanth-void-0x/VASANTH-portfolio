@@ -30,8 +30,8 @@ const experiences = [
     icon: FileSearch,
   },
   {
-    title: "AI Security",
-    description: "Practical LLM, RAG, MCP, prompt-injection, data-leakage, and agent security testing.",
+    title: "AI Security Research & Testing",
+    description: "Independent LLM, RAG, MCP, prompt-injection, data-leakage, and agent security research.",
     tools: "RAGExploit • AgentShield • AI Red Team • MITRE ATLAS",
     icon: BrainCircuit,
   },
@@ -40,8 +40,8 @@ const experiences = [
 export default function Experience() {
   return (
     <section id="experience" className="relative overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-5xl px-6 py-24">
-        <SectionHeading eyebrow="// PRACTICAL_EXPOSURE" title="Hands-on Experience" accent="volt" />
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-20">
+        <SectionHeading eyebrow="// PRACTICAL_EXPOSURE" title="Experience & Security Research" accent="volt" />
 
         <div className="experience-compact-list">
           {experiences.map((item, index) => {

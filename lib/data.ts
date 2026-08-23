@@ -8,7 +8,7 @@ export const profile = {
   linkedin: "https://linkedin.com/in/vasanth-2k4",
   resumePath: "/Vasanth_Kumar_Resume.pdf",
   summary:
-    "Cybersecurity and Digital Forensics graduate focused on SOC operations, AI security, and security automation. Hands-on experience includes SIEM monitoring, alert triage, threat hunting, incident response, vulnerability assessment, and building practical security tools across home labs and real-world project simulations. Ready to contribute as an entry-level SOC Analyst, Security Analyst, or Cybersecurity Analyst.",
+    "Cybersecurity and Digital Forensics graduate with hands-on exposure to SOC operations, AI security, security automation, SIEM investigation, threat hunting, vulnerability assessment, and practical defensive tool development.",
 };
 
 export const skillGroups = [
@@ -319,11 +319,15 @@ export const education = [
     degree: "Master of Computer Applications (MCA)",
     school: "Sri Sai Bharath College of Arts & Science",
     period: "2026 – 2028",
+    status: "Pursuing",
+    focus: "Advanced Computing & Security",
   },
   {
     degree: "B.Sc. Cybersecurity & Digital Forensics",
     school: "Rev. Jacob Memorial Christian College",
     period: "2023 – 2026",
+    status: "Completed",
+    focus: "Cybersecurity & Digital Forensics",
   },
 ];
 

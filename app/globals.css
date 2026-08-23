@@ -593,6 +593,7 @@ body {
 
 .project-card {
   isolation: isolate;
+  min-height: 540px;
 }
 
 .project-card::after {
@@ -1044,17 +1045,17 @@ body {
 }
 .experience-compact-copy p {
   margin-top: .35rem;
-  font-size: .8rem;
+  font-size: .84rem;
   line-height: 1.5;
-  color: rgba(255,255,255,.58);
+  color: rgba(255,255,255,.66);
 }
 .experience-compact-copy span {
   display: block;
   margin-top: .42rem;
   font-family: var(--font-jetbrains), monospace;
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: .055em;
-  color: rgba(57,255,140,.64);
+  color: rgba(57,255,140,.72);
 }
 .cert-training-grid {
   display: grid;

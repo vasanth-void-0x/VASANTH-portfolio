@@ -143,7 +143,7 @@ function ProcessRail({ card }: { card: SkillCard }) {
   const accent = accents[card.accent];
 
   return (
-    <div className="relative mb-5 px-1 py-2">
+    <div className="relative mb-4 px-1 py-2">
       <div className={`absolute left-3 right-3 top-[1.14rem] h-px bg-gradient-to-r ${accent.line} opacity-45`} />
       <div className="relative flex items-start justify-between gap-1">
         {card.process.map((step) => (
@@ -169,12 +169,12 @@ export default function Skills() {
           accent="signal"
         />
 
-        <p className="mx-auto -mt-5 mb-16 max-w-2xl text-center font-mono text-xs leading-relaxed text-white/45">
+        <p className="mx-auto -mt-5 mb-12 max-w-2xl text-center font-mono text-xs leading-relaxed text-white/50">
           Practical security capabilities visualized as clear operational workflows
           used to detect, investigate, test, automate, and protect.
         </p>
 
-        <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {skillCards.map((card, index) => {
             const accent = accents[card.accent];
 
@@ -186,11 +186,11 @@ export default function Skills() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: (index % 3) * 0.1 }}
                 whileHover={{ y: -6 }}
-                className={`group relative min-h-[325px] rounded-2xl border ${accent.border} bg-[rgba(7,14,20,0.78)] px-5 pb-5 pt-14 backdrop-blur-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(9,18,25,0.9)]`}
+                className={`group relative min-h-[292px] rounded-2xl border ${accent.border} bg-[rgba(7,14,20,0.78)] px-5 pb-4 pt-12 backdrop-blur-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(9,18,25,0.9)]`}
               >
                 <FloatingVisual card={card} />
 
-                <div className="mb-4">
+                <div className="mb-3">
                   <p className="mb-1 font-mono text-[9px] uppercase tracking-[0.24em] text-white/30">
                     Operational capability
                   </p>
@@ -202,17 +202,22 @@ export default function Skills() {
                 <ProcessRail card={card} />
 
                 <div className="flex flex-wrap gap-1.5">
-                  {card.skills.map((skill, skillIndex) => (
+                  {card.skills.slice(0, 6).map((skill, skillIndex) => (
                     <motion.span
                       key={skill}
                       initial={{ opacity: 0.55 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ delay: 0.05 * skillIndex }}
-                      className={`rounded-md border ${accent.border} bg-white/[0.025] px-2.5 py-1 font-mono text-[10px] text-white/70 transition-colors group-hover:text-white/90`}
+                      className={`rounded-md border ${accent.border} bg-white/[0.025] px-2.5 py-1 font-mono text-[11px] text-white/72 transition-colors group-hover:text-white/90`}
                     >
                       {skill}
                     </motion.span>
                   ))}
+                  {card.skills.length > 6 && (
+                    <span className={`rounded-md border ${accent.border} ${accent.soft} px-2.5 py-1 font-mono text-[10px] ${accent.text}`}>
+                      +{card.skills.length - 6} more
+                    </span>
+                  )}
                 </div>
 
               </motion.article>

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { MapPin, Crosshair } from "lucide-react";
 import SectionHeading from "./SectionHeading";
-import { profile } from "@/lib/data";
 
 export default function About() {
   return (
@@ -25,8 +24,14 @@ export default function About() {
               Security Profile
             </p>
           </div>
-          <p className="font-body text-lg font-medium leading-8 text-white/85 sm:text-xl sm:leading-9">
-            {profile.summary}
+          <p className="font-body text-lg font-medium leading-8 text-white/80 sm:text-xl sm:leading-9">
+            Cybersecurity and Digital Forensics graduate with hands-on exposure to{" "}
+            <span className="text-neon text-glow-green">SOC Operations</span>,{" "}
+            <span className="text-neon text-glow-green">AI Security</span>, and{" "}
+            <span className="text-neon text-glow-green">Security Automation</span>.
+            I investigate alerts, analyze SIEM telemetry, hunt threats, assess vulnerabilities,
+            and build practical defensive tools through home labs and project simulations.
+            Ready to contribute as an entry-level SOC Analyst or Security Analyst.
           </p>
         </motion.div>
 

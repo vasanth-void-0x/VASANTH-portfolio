@@ -10,7 +10,7 @@ export default function Certifications() {
 
   return (
     <section id="certifications" className="relative overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-5xl px-6 py-28">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-20">
       <SectionHeading eyebrow="// VERIFIED_LEARNING" title="Certifications & Training" accent="neon" />
 
       <div className="cert-training-grid">
