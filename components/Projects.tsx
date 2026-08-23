@@ -171,7 +171,7 @@ export default function Projects() {
         <SectionHeading eyebrow="// DEPLOYED_BUILDS" title="Security Projects" accent="neon" />
 
         <div
-          className="mx-auto mb-12 flex w-fit max-w-full flex-wrap justify-center gap-2 rounded-xl border border-cyan-400/25 bg-[#061019]/90 p-2 shadow-[0_0_32px_rgba(34,211,238,0.12)] backdrop-blur-xl"
+        className="mx-auto mb-10 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-lg border border-neon/20 bg-[#07110d]/85 p-1 shadow-[0_0_20px_rgba(57,255,140,0.08)] backdrop-blur-xl"
           role="group"
           aria-label="Project filters"
         >
@@ -188,19 +188,17 @@ export default function Projects() {
                 type="button"
                 onClick={() => setActiveFilter(filter)}
                 aria-pressed={active}
-                className={`min-w-[118px] rounded-lg border px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.14em] transition-all duration-300 ${
-                  active
-                    ? filter === "AI Security"
-                      ? "border-violet-400 bg-violet-500/20 text-violet-200 shadow-[0_0_22px_rgba(139,92,246,0.38)]"
-                      : "border-cyan-300 bg-cyan-400/20 text-cyan-100 shadow-[0_0_22px_rgba(34,211,238,0.38)]"
-                    : "border-white/25 bg-white/[0.07] text-white/80 hover:border-cyan-300/70 hover:bg-cyan-400/10 hover:text-cyan-100"
-                }`}
+            className={`min-w-[86px] rounded-md border px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.1em] transition-all duration-300 sm:min-w-[104px] sm:text-[11px] ${
+              active
+                ? "border-neon/70 bg-neon/15 text-neon shadow-[inset_0_0_12px_rgba(57,255,140,0.08),0_0_14px_rgba(57,255,140,0.18)]"
+                : "border-neon/10 bg-transparent text-white/55 hover:border-neon/35 hover:bg-neon/[0.05] hover:text-white/80"
+            }`}
               >
                 {filter}
                 <span
-                  className={`ml-2 inline-flex min-w-6 justify-center rounded-full border px-1.5 py-0.5 text-[10px] ${
-                    active ? "border-current/50 bg-black/20 text-current" : "border-white/20 bg-black/30 text-white/65"
-                  }`}
+          className={`ml-1.5 inline-flex min-w-5 justify-center rounded-full border px-1 py-px text-[9px] ${
+            active ? "border-neon/40 bg-neon/10 text-neon" : "border-white/10 bg-black/20 text-white/45"
+          }`}
                 >
                   {count}
                 </span>
