@@ -23,7 +23,6 @@ type SkillCard = {
   title: string;
   icon: LucideIcon;
   accent: Accent;
-  process: string[];
   skills: string[];
   visualLabel: string;
 };
@@ -75,7 +74,6 @@ const skillCards: SkillCard[] = [
     icon: MonitorDot,
     accent: "cyan",
     visualLabel: "LIVE MONITOR",
-    process: ["Logs", "SIEM", "Alert", "Investigate", "Respond"],
     skills: ["Splunk", "Wazuh", "Sentinel", "Sysmon", "Alert Triage", "Threat Hunting", "Incident Response"],
   },
   {
@@ -83,7 +81,6 @@ const skillCards: SkillCard[] = [
     icon: Crosshair,
     accent: "red",
     visualLabel: "TARGET SCAN",
-    process: ["Recon", "Scan", "Validate", "Report"],
     skills: ["Nmap", "Burp Suite", "Nikto", "Metasploit", "Vulnerability Assessment", "Web Testing"],
   },
   {
@@ -91,7 +88,6 @@ const skillCards: SkillCard[] = [
     icon: Fingerprint,
     accent: "cyan",
     visualLabel: "EVIDENCE VERIFIED",
-    process: ["Evidence", "Hash", "Analyze", "Timeline", "Report"],
     skills: ["Autopsy", "FTK Imager", "YARA-X", "EVTX", "SHA-256", "Timeline Analysis", "Chain of Custody"],
   },
   {
@@ -99,7 +95,6 @@ const skillCards: SkillCard[] = [
     icon: Terminal,
     accent: "green",
     visualLabel: "ETHICAL DEFENSE",
-    process: ["Threat", "Detect", "Analyze", "Protect"],
     skills: ["Security Tools", "Threat Analysis", "IOC Analysis", "MITRE ATT&CK", "Cyber Kill Chain", "Linux"],
   },
   {
@@ -107,7 +102,6 @@ const skillCards: SkillCard[] = [
     icon: Cpu,
     accent: "purple",
     visualLabel: "AI SECURITY CORE",
-    process: ["LLM / RAG / MCP", "Scan", "Risk", "Allow · Review · Block"],
     skills: ["LLM Security", "RAG Security", "MCP Security", "Agentic AI", "Prompt Injection", "Document Poisoning", "Data Leakage", "Tool Misuse", "OWASP Agentic", "MITRE ATLAS"],
   },
   {
@@ -115,7 +109,6 @@ const skillCards: SkillCard[] = [
     icon: Workflow,
     accent: "purple",
     visualLabel: "WORKFLOW ACTIVE",
-    process: ["Alert", "Webhook", "Enrich", "Decide", "Respond"],
     skills: ["Python", "PowerShell", "Bash", "n8n", "REST APIs", "Webhooks", "Groq API", "SOAR"],
   },
   {
@@ -123,7 +116,6 @@ const skillCards: SkillCard[] = [
     icon: CloudCog,
     accent: "cyan",
     visualLabel: "CLOUD CONTROL",
-    process: ["Identity", "Access", "Detect Risk", "Secure"],
     skills: ["Cloudflare Workers", "Cloudflare D1", "Microsoft Azure", "AWS Fundamentals", "IAM", "Docker", "CI/CD Security"],
   },
   {
@@ -131,7 +123,6 @@ const skillCards: SkillCard[] = [
     icon: Network,
     accent: "green",
     visualLabel: "PACKET CONTROL",
-    process: ["Traffic", "Monitor", "Detect", "Block"],
     skills: ["TCP/IP", "OSI Model", "DNS", "HTTP/HTTPS", "Wireshark", "Network Ports", "Troubleshooting"],
   },
   {
@@ -139,7 +130,6 @@ const skillCards: SkillCard[] = [
     icon: Bug,
     accent: "red",
     visualLabel: "BUG FOUND",
-    process: ["Recon", "Find Bug", "Exploit Lab", "Flag / Report"],
     skills: ["TryHackMe", "Hack The Box", "Web Security Labs", "OSINT", "Gobuster", "Hydra", "John the Ripper"],
   },
 ];
@@ -179,33 +169,6 @@ function FloatingVisual({ card }: { card: SkillCard }) {
   );
 }
 
-function ProcessRail({ card }: { card: SkillCard }) {
-  const accent = accents[card.accent];
-
-  return (
-    <div className="relative mb-5 overflow-hidden rounded-lg border border-white/5 bg-black/25 px-3 py-3">
-      <div className={`absolute left-3 right-3 top-[1.14rem] h-px bg-gradient-to-r ${accent.line} opacity-45`} />
-      <motion.div
-        className={`absolute top-[0.94rem] h-2 w-2 rounded-full ${card.accent === "red" ? "bg-red-400" : card.accent === "purple" ? "bg-violet-300" : card.accent === "green" ? "bg-emerald-300" : card.accent === "amber" ? "bg-amber-300" : "bg-cyan-300"} shadow-[0_0_12px_currentColor]`}
-        initial={{ left: "3%" }}
-        whileInView={{ left: "94%" }}
-        viewport={{ once: false, amount: 0.8 }}
-        transition={{ duration: 2.8, repeat: Infinity, repeatDelay: 0.8, ease: "easeInOut" }}
-      />
-      <div className="relative flex items-start justify-between gap-1">
-        {card.process.map((step) => (
-          <div key={step} className="flex min-w-0 flex-1 flex-col items-center text-center">
-            <span className={`mb-2 h-2 w-2 rounded-full border ${accent.border} bg-[#071015]`} />
-            <span className="font-mono text-[9px] uppercase leading-tight tracking-wide text-white/55">
-              {step}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function Skills() {
   return (
     <section id="skills" className="relative overflow-hidden">
@@ -217,8 +180,8 @@ export default function Skills() {
         />
 
         <p className="mx-auto -mt-5 mb-16 max-w-2xl text-center font-mono text-xs leading-relaxed text-white/45">
-          Practical security capabilities visualized as the workflows used to detect,
-          investigate, test, and protect.
+          Practical security capabilities and tools used to detect, investigate,
+          test, automate, and protect.
         </p>
 
         <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
@@ -233,7 +196,7 @@ export default function Skills() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: (index % 3) * 0.1 }}
                 whileHover={{ y: -6 }}
-                className={`group relative min-h-[330px] rounded-[1.35rem] border border-white/10 bg-[linear-gradient(145deg,rgba(10,20,28,0.86),rgba(4,9,15,0.72))] px-5 pb-5 pt-14 backdrop-blur-xl transition-all duration-300 hover:${accent.border} ${accent.glow}`}
+                className={`group relative min-h-[290px] rounded-[1.35rem] border border-white/10 bg-[linear-gradient(145deg,rgba(10,20,28,0.86),rgba(4,9,15,0.72))] px-5 pb-5 pt-14 backdrop-blur-xl transition-all duration-300 hover:${accent.border} ${accent.glow}`}
               >
                 <FloatingVisual card={card} />
 
@@ -253,8 +216,6 @@ export default function Skills() {
                   </h3>
                 </div>
 
-                <ProcessRail card={card} />
-
                 <div className="flex flex-wrap gap-1.5">
                   {card.skills.map((skill, skillIndex) => (
                     <motion.span
@@ -269,13 +230,6 @@ export default function Skills() {
                   ))}
                 </div>
 
-                <div className="pointer-events-none absolute bottom-0 left-5 right-5 h-px overflow-hidden bg-white/5">
-                  <motion.div
-                    className={`h-full w-1/3 bg-gradient-to-r ${accent.line}`}
-                    animate={{ x: ["-120%", "420%"] }}
-                    transition={{ duration: 3.2, repeat: Infinity, ease: "linear" }}
-                  />
-                </div>
               </motion.article>
             );
           })}
