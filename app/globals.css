@@ -492,14 +492,14 @@ body {
   object-fit: contain;
   opacity: .88;
   mix-blend-mode: normal;
-  filter: saturate(1.08) contrast(1.16) brightness(.92) drop-shadow(0 0 12px rgba(57,255,140,.34));
+  filter: drop-shadow(0 0 12px rgba(57,255,140,.34));
   -webkit-mask-image: none;
   mask-image: none;
   animation: heroAiImagePulse 3.4s ease-in-out infinite;
 }
 
 @keyframes heroAiImagePulse {
-  50% { opacity: 1; filter: saturate(1.14) contrast(1.18) brightness(.98) drop-shadow(0 0 16px rgba(57,255,140,.5)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 16px rgba(57,255,140,.52)); }
 }
 
 .hero-scan-line {
