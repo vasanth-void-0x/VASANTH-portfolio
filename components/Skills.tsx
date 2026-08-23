@@ -154,13 +154,24 @@ function FloatingVisual({ card }: { card: SkillCard }) {
       className="absolute -top-10 left-6 z-20"
       aria-hidden="true"
     >
-      <div className={`relative flex h-20 w-20 items-center justify-center rounded-[1.35rem] border ${accent.border} ${accent.soft} ${accent.glow} backdrop-blur-xl`}>
+      <div className={`relative flex h-20 w-20 items-center justify-center ${accent.glow}`}>
+        <span className={`absolute left-0 top-0 h-5 w-5 border-l-2 border-t-2 ${accent.border}`} />
+        <span className={`absolute right-0 top-0 h-5 w-5 border-r-2 border-t-2 ${accent.border}`} />
+        <span className={`absolute bottom-0 left-0 h-5 w-5 border-b-2 border-l-2 ${accent.border}`} />
+        <span className={`absolute bottom-0 right-0 h-5 w-5 border-b-2 border-r-2 ${accent.border}`} />
         <motion.div
-          animate={{ opacity: [0.25, 0.65, 0.25], scale: [0.9, 1.15, 0.9] }}
+          animate={{ opacity: [0.14, 0.38, 0.14], scale: [0.82, 1.12, 0.82] }}
           transition={{ duration: 2.4, repeat: Infinity }}
-          className={`absolute inset-2 rounded-2xl border ${accent.border}`}
+          className={`absolute inset-3 rounded-full ${accent.soft} blur-md`}
         />
-        <Icon className={`relative h-10 w-10 ${accent.text}`} strokeWidth={1.45} />
+        {card.title === "Cybersecurity" ? (
+          <div className="relative">
+            <Terminal className={`h-11 w-11 ${accent.text}`} strokeWidth={1.35} />
+            <Laptop className={`absolute -bottom-2 -right-3 h-6 w-6 ${accent.text}`} strokeWidth={1.6} />
+          </div>
+        ) : (
+          <Icon className={`relative h-11 w-11 ${accent.text}`} strokeWidth={1.35} />
+        )}
         <span className={`absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full ${card.accent === "red" ? "bg-red-500" : card.accent === "purple" ? "bg-violet-400" : card.accent === "green" ? "bg-emerald-400" : card.accent === "amber" ? "bg-amber-400" : "bg-cyan-400"} shadow-[0_0_12px_currentColor]`} />
       </div>
     </motion.div>
