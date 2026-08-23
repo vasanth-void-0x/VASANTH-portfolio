@@ -71,7 +71,7 @@ const additionalProjects: Project[] = [
     description:
       "Developed an ethical security scanner for RAG and AI applications that tests document poisoning, indirect prompt injection, unauthorized retrieval, and sensitive-data leakage.",
     tools: ["Python", "LLM Security", "RAG Security", "MCP", "Prompt Injection", "CLI"],
-    image: "/projects/1.png",
+    image: "/projects/ragexploit-dashboard.webp",
     github: "https://github.com/vasanth-void-0x/RAGExploit",
     caseStudy: {
       category: "AI / RAG SECURITY",
@@ -89,7 +89,7 @@ const additionalProjects: Project[] = [
       mitre: ["MITRE ATLAS", "OWASP guidance for LLM and agentic applications"],
       response: ["Remove poisoned content.", "Enforce retrieval authorization.", "Validate context before generation."],
       learnings: ["RAG security", "Indirect prompt injection", "Retrieval authorization", "AI security scanning"],
-      evidence: [{ src: "/projects/1.png", caption: "RAGExploit AI and RAG security scanner" }],
+      evidence: [{ src: "/projects/ragexploit-dashboard.webp", caption: "RAGExploit AI and RAG security scanner" }],
     },
   },
   {
@@ -98,7 +98,7 @@ const additionalProjects: Project[] = [
     description:
       "Created an AI-focused red-team workbench for controlled adversarial testing, attack-scenario execution, risk scoring, evidence review, and security reporting.",
     tools: ["Python", "AI Red Teaming", "LLM", "Prompt Testing", "Risk Scoring", "MITRE ATLAS"],
-    image: "/projects/2.png",
+    image: "/projects/ai-red-team-agent-dashboard.webp",
     caseStudy: {
       category: "AI RED TEAMING",
       objective: "Organize authorized adversarial tests against AI behavior and translate results into actionable findings.",
@@ -115,7 +115,7 @@ const additionalProjects: Project[] = [
       mitre: ["MITRE ATLAS", "OWASP Agentic AI risk categories"],
       response: ["Apply guardrails and permission controls.", "Retest remediated behavior against the same scenarios."],
       learnings: ["AI red teaming", "Adversarial testing", "Risk scoring", "Security reporting"],
-      evidence: [{ src: "/projects/2.png", caption: "AI Red Team Agent security dashboard" }],
+      evidence: [{ src: "/projects/ai-red-team-agent-dashboard.webp", caption: "AI Red Team Agent security dashboard" }],
     },
   },
 ];
