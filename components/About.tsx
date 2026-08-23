@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ShieldCheck, Radar, Bug, Cpu } from "lucide-react";
+import { ShieldCheck, Radar, Bug, Cpu, MapPin, Crosshair } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import { profile } from "@/lib/data";
 
@@ -44,14 +44,37 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="glass-card hud-corners rounded-lg p-8"
+          className="glass-card hud-corners rounded-lg p-7 sm:p-9"
         >
-          <p className="font-body text-base leading-relaxed text-white/80 sm:text-lg">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="h-px w-8 bg-neon/70" />
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-neon text-glow-green sm:text-sm">
+              Security Profile
+            </p>
+          </div>
+          <p className="font-body text-lg font-medium leading-8 text-white/85 sm:text-xl sm:leading-9">
             {profile.summary}
           </p>
-          <p className="mt-4 font-mono text-xs uppercase tracking-widest text-white/40">
-            preferred locations: Coimbatore · Chennai · Bangalore
-          </p>
+          <div className="mt-7 space-y-4 border-t border-neon/15 pt-5">
+            <div className="flex flex-wrap items-center gap-3">
+              <Crosshair className="text-neon drop-shadow-[0_0_7px_rgba(57,255,140,0.7)]" size={19} />
+              <span className="font-mono text-xs uppercase tracking-[0.18em] text-white/50 sm:text-sm">
+                Target roles
+              </span>
+              <span className="font-display text-base font-semibold tracking-wide text-white/90 sm:text-lg">
+                SOC Analyst · Security Analyst · Cybersecurity Analyst
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <MapPin className="text-neon drop-shadow-[0_0_7px_rgba(57,255,140,0.7)]" size={19} />
+              <span className="font-mono text-xs uppercase tracking-[0.18em] text-white/50 sm:text-sm">
+                Preferred locations
+              </span>
+              <span className="font-display text-base font-semibold tracking-wide text-neon text-glow-green sm:text-lg">
+                Coimbatore · Chennai · Bangalore
+              </span>
+            </div>
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
