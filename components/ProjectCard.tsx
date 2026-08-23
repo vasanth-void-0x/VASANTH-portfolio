@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import { Github, Terminal, Zap } from "lucide-react";
 import type { Project } from "@/lib/data";
 
-export default function ProjectCard({ project, index, onCaseStudy }: { project: Project; index: number; onCaseStudy: (project: Project) => void }) {
+export default function ProjectCard({ project, index, category, onCaseStudy }: { project: Project; index: number; category?: "Cybersecurity" | "AI Security"; onCaseStudy: (project: Project) => void }) {
   const [imgError, setImgError] = useState(false);
   return (
     <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5, delay: (index % 3) * 0.12 }} whileHover={{ y: -8 }} className="project-card glass-card hud-corners group flex flex-col overflow-hidden rounded-lg transition-shadow duration-300 hover:shadow-neon-glow">
       <div className="relative h-44 w-full overflow-hidden border-b border-neon/15 bg-void-card">
+        {category && <span className={`absolute left-3 top-3 z-10 rounded-sm border px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest backdrop-blur-md ${category === "AI Security" ? "border-signal/50 bg-signal/15 text-signal" : "border-neon/50 bg-neon/10 text-neon"}`}>{category}</span>}
         {!imgError ? <img src={project.image} alt={`${project.title} preview`} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" onError={() => setImgError(true)} /> : <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-void via-void-card to-signal/10 text-white/30"><Terminal size={32} /><span className="font-mono text-[10px] uppercase tracking-widest">preview_pending.png</span></div>}
       </div>
       <div className="flex flex-1 flex-col p-6">
