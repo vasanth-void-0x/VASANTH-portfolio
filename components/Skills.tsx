@@ -1,28 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Bug,
-  CloudCog,
-  Cpu,
-  Crosshair,
-  Fingerprint,
-  Laptop,
-  MonitorDot,
-  Network,
-  ShieldCheck,
-  Terminal,
-  Workflow,
-  type LucideIcon,
-} from "lucide-react";
+import Image from "next/image";
+import { ShieldCheck } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 type Accent = "cyan" | "purple" | "red" | "green" | "amber";
 
 type SkillCard = {
   title: string;
-  icon: LucideIcon;
+  image: string;
   accent: Accent;
+  process: string[];
   skills: string[];
   visualLabel: string;
 };
@@ -71,101 +60,127 @@ const accents: Record<
 const skillCards: SkillCard[] = [
   {
     title: "SOC Operations",
-    icon: MonitorDot,
+    image: "/assets/skills/soc-operations.png",
     accent: "cyan",
     visualLabel: "LIVE MONITOR",
+    process: ["Logs", "SIEM", "Alert", "Investigate", "Respond"],
     skills: ["Splunk", "Wazuh", "Sentinel", "Sysmon", "Alert Triage", "Threat Hunting", "Incident Response"],
   },
   {
     title: "VAPT",
-    icon: Crosshair,
+    image: "/assets/skills/vapt.png",
     accent: "red",
     visualLabel: "TARGET SCAN",
+    process: ["Recon", "Scan", "Validate", "Report"],
     skills: ["Nmap", "Burp Suite", "Nikto", "Metasploit", "Vulnerability Assessment", "Web Testing"],
   },
   {
     title: "DFIR",
-    icon: Fingerprint,
+    image: "/assets/skills/dfir.png",
     accent: "cyan",
     visualLabel: "EVIDENCE VERIFIED",
+    process: ["Evidence", "Hash", "Analyze", "Timeline", "Report"],
     skills: ["Autopsy", "FTK Imager", "YARA-X", "EVTX", "SHA-256", "Timeline Analysis", "Chain of Custody"],
   },
   {
     title: "Cybersecurity",
-    icon: Terminal,
+    image: "/assets/skills/cybersecurity.png",
     accent: "green",
     visualLabel: "ETHICAL DEFENSE",
+    process: ["Threat", "Detect", "Analyze", "Protect"],
     skills: ["Security Tools", "Threat Analysis", "IOC Analysis", "MITRE ATT&CK", "Cyber Kill Chain", "Linux"],
   },
   {
     title: "AI Security",
-    icon: Cpu,
+    image: "/assets/skills/ai-security.png",
     accent: "purple",
     visualLabel: "AI SECURITY CORE",
+    process: ["LLM / RAG / MCP", "Scan", "Risk", "Allow · Review · Block"],
     skills: ["LLM Security", "RAG Security", "MCP Security", "Agentic AI", "Prompt Injection", "Document Poisoning", "Data Leakage", "Tool Misuse", "OWASP Agentic", "MITRE ATLAS"],
   },
   {
     title: "Security Automation",
-    icon: Workflow,
+    image: "/assets/skills/security-automation.png",
     accent: "purple",
     visualLabel: "WORKFLOW ACTIVE",
+    process: ["Alert", "Webhook", "Enrich", "Decide", "Respond"],
     skills: ["Python", "PowerShell", "Bash", "n8n", "REST APIs", "Webhooks", "Groq API", "SOAR"],
   },
   {
     title: "Cloud Security",
-    icon: CloudCog,
+    image: "/assets/skills/cloud-security.png",
     accent: "cyan",
     visualLabel: "CLOUD CONTROL",
+    process: ["Identity", "Access", "Detect Risk", "Secure"],
     skills: ["Cloudflare Workers", "Cloudflare D1", "Microsoft Azure", "AWS Fundamentals", "IAM", "Docker", "CI/CD Security"],
   },
   {
     title: "Network Security",
-    icon: Network,
+    image: "/assets/skills/network-security.png",
     accent: "green",
     visualLabel: "PACKET CONTROL",
+    process: ["Traffic", "Monitor", "Detect", "Block"],
     skills: ["TCP/IP", "OSI Model", "DNS", "HTTP/HTTPS", "Wireshark", "Network Ports", "Troubleshooting"],
   },
   {
     title: "Bug Bounty & CTF Player",
-    icon: Bug,
+    image: "/assets/skills/bug-bounty-ctf.png",
     accent: "red",
     visualLabel: "BUG FOUND",
+    process: ["Recon", "Find Bug", "Exploit Lab", "Flag / Report"],
     skills: ["TryHackMe", "Hack The Box", "Web Security Labs", "OSINT", "Gobuster", "Hydra", "John the Ripper"],
   },
 ];
 
 function FloatingVisual({ card }: { card: SkillCard }) {
-  const Icon = card.icon;
   const accent = accents[card.accent];
 
   return (
     <motion.div
-      animate={{ y: [0, -5, 0] }}
-      transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-      className="absolute -top-10 left-6 z-20"
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.55 }}
+      className="absolute -top-16 left-3 z-20"
       aria-hidden="true"
     >
-      <div className={`relative flex h-20 w-20 items-center justify-center ${accent.glow}`}>
+      <div className={`relative flex h-28 w-32 items-center justify-center ${accent.glow}`}>
         <span className={`absolute left-0 top-0 h-5 w-5 border-l-2 border-t-2 ${accent.border}`} />
         <span className={`absolute right-0 top-0 h-5 w-5 border-r-2 border-t-2 ${accent.border}`} />
         <span className={`absolute bottom-0 left-0 h-5 w-5 border-b-2 border-l-2 ${accent.border}`} />
         <span className={`absolute bottom-0 right-0 h-5 w-5 border-b-2 border-r-2 ${accent.border}`} />
-        <motion.div
-          animate={{ opacity: [0.14, 0.38, 0.14], scale: [0.82, 1.12, 0.82] }}
-          transition={{ duration: 2.4, repeat: Infinity }}
-          className={`absolute inset-3 rounded-full ${accent.soft} blur-md`}
+        <div className={`absolute inset-5 rounded-full ${accent.soft} blur-xl`} />
+        <Image
+          src={card.image}
+          alt=""
+          width={480}
+          height={360}
+          sizes="128px"
+          className="relative h-24 w-28 object-contain drop-shadow-[0_0_12px_rgba(57,255,140,0.35)]"
         />
-        {card.title === "Cybersecurity" ? (
-          <div className="relative">
-            <Terminal className={`h-11 w-11 ${accent.text}`} strokeWidth={1.35} />
-            <Laptop className={`absolute -bottom-2 -right-3 h-6 w-6 ${accent.text}`} strokeWidth={1.6} />
-          </div>
-        ) : (
-          <Icon className={`relative h-11 w-11 ${accent.text}`} strokeWidth={1.35} />
-        )}
         <span className={`absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full ${card.accent === "red" ? "bg-red-500" : card.accent === "purple" ? "bg-violet-400" : card.accent === "green" ? "bg-emerald-400" : card.accent === "amber" ? "bg-amber-400" : "bg-cyan-400"} shadow-[0_0_12px_currentColor]`} />
       </div>
     </motion.div>
+  );
+}
+
+function ProcessRail({ card }: { card: SkillCard }) {
+  const accent = accents[card.accent];
+
+  return (
+    <div className="relative mb-5 overflow-hidden rounded-lg border border-white/5 bg-black/25 px-3 py-3">
+      <div className={`absolute left-3 right-3 top-[1.14rem] h-px bg-gradient-to-r ${accent.line} opacity-45`} />
+      <div className="relative flex items-start justify-between gap-1">
+        {card.process.map((step) => (
+          <div key={step} className="flex min-w-0 flex-1 flex-col items-center text-center">
+            <span className={`mb-2 h-2 w-2 rounded-full border ${accent.border} bg-[#071015]`} />
+            <span className="font-mono text-[9px] uppercase leading-tight tracking-wide text-white/55">
+              {step}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -180,8 +195,8 @@ export default function Skills() {
         />
 
         <p className="mx-auto -mt-5 mb-16 max-w-2xl text-center font-mono text-xs leading-relaxed text-white/45">
-          Practical security capabilities and tools used to detect, investigate,
-          test, automate, and protect.
+          Practical security capabilities visualized as clear operational workflows
+          used to detect, investigate, test, automate, and protect.
         </p>
 
         <div className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
@@ -196,7 +211,7 @@ export default function Skills() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: (index % 3) * 0.1 }}
                 whileHover={{ y: -6 }}
-                className={`group relative min-h-[290px] rounded-[1.35rem] border border-white/10 bg-[linear-gradient(145deg,rgba(10,20,28,0.86),rgba(4,9,15,0.72))] px-5 pb-5 pt-14 backdrop-blur-xl transition-all duration-300 hover:${accent.border} ${accent.glow}`}
+                className={`group relative min-h-[350px] rounded-[1.35rem] border border-white/10 bg-[linear-gradient(145deg,rgba(10,20,28,0.86),rgba(4,9,15,0.72))] px-5 pb-5 pt-16 backdrop-blur-xl transition-all duration-300 hover:${accent.border} ${accent.glow}`}
               >
                 <FloatingVisual card={card} />
 
@@ -215,6 +230,8 @@ export default function Skills() {
                     {card.title}
                   </h3>
                 </div>
+
+                <ProcessRail card={card} />
 
                 <div className="flex flex-wrap gap-1.5">
                   {card.skills.map((skill, skillIndex) => (
