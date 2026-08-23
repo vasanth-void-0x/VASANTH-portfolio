@@ -110,10 +110,11 @@ export default function WorldAttackBackground() {
       })}
 
       <div className="hero-ai-chip hero-parallax-hud">
-        <span className="hero-ai-chip-node hero-ai-chip-node-one" />
-        <span className="hero-ai-chip-node hero-ai-chip-node-two" />
-        <span className="hero-ai-chip-node hero-ai-chip-node-three" />
-        <span className="hero-ai-chip-node hero-ai-chip-node-four" />
+        <div className="hero-ai-circuit-field">
+          {Array.from({ length: 12 }).map((_, index) => (
+            <span key={index} className={`hero-ai-trace hero-ai-trace-${index + 1}`}><i /></span>
+          ))}
+        </div>
         <div className="hero-ai-chip-core">
           <small>DEFENSE CORE</small>
           <strong>AI SECURITY</strong>
