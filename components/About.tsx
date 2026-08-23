@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ShieldCheck, Radar, Bug, Cpu } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import { profile } from "@/lib/data";
@@ -17,7 +18,27 @@ export default function About() {
     <section id="about" className="relative mx-auto max-w-6xl px-6 py-28">
       <SectionHeading eyebrow="// IDENTITY_FILE" title="About the Operative" accent="volt" />
 
-      <div className="grid gap-10 md:grid-cols-2 md:items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 24, scale: 0.985 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.8 }}
+        className="relative isolate mb-10 overflow-hidden rounded-2xl border border-neon/20 bg-[#020706]/75 shadow-[0_22px_70px_rgba(0,0,0,0.42),0_0_34px_rgba(57,255,140,0.08)] max-sm:-mx-2 max-sm:rounded-xl"
+      >
+        <div className="pointer-events-none absolute left-2.5 top-2.5 z-10 h-12 w-12 border-l-2 border-t-2 border-neon/80" aria-hidden="true" />
+        <div className="pointer-events-none absolute bottom-2.5 right-2.5 z-10 h-12 w-12 border-b-2 border-r-2 border-neon/80" aria-hidden="true" />
+        <Image
+          src="/assets/vasanth-security-core.png"
+          alt="Vasanth security core connecting SOC Operations, AI Security, Cybersecurity and Security Automation"
+          width={1680}
+          height={945}
+          sizes="(max-width: 768px) 100vw, 1152px"
+          className="h-auto w-full object-contain"
+          priority={false}
+        />
+      </motion.div>
+
+      <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
