@@ -81,9 +81,19 @@ export default function Hero() {
           {profile.name}
         </motion.h1>
 
-        <div className="min-h-[4.5rem] max-w-3xl font-mono text-sm text-white/70 sm:text-base">
-          <TypingText text={profile.tagline} />
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="flex min-h-[5rem] flex-col items-center justify-start gap-2"
+        >
+          <p className="font-display text-base uppercase tracking-[0.24em] text-neon sm:text-lg">
+            {profile.role}
+          </p>
+          <div className="max-w-3xl font-mono text-sm text-white/75 sm:text-base">
+            <TypingText text={profile.tagline} />
+          </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
