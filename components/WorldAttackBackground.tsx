@@ -109,6 +109,18 @@ export default function WorldAttackBackground() {
         );
       })}
 
+      <div className="hero-ai-chip hero-parallax-hud">
+        <span className="hero-ai-chip-node hero-ai-chip-node-one" />
+        <span className="hero-ai-chip-node hero-ai-chip-node-two" />
+        <span className="hero-ai-chip-node hero-ai-chip-node-three" />
+        <span className="hero-ai-chip-node hero-ai-chip-node-four" />
+        <div className="hero-ai-chip-core">
+          <small>DEFENSE CORE</small>
+          <strong>AI SECURITY</strong>
+          <em>LLM · RAG · MCP</em>
+        </div>
+      </div>
+
       <div className="hero-hud hero-hud-left hero-parallax-hud">
         <p>// SYSTEM_STATUS</p>
         <span>&gt; Connecting to SIEM... OK</span>
