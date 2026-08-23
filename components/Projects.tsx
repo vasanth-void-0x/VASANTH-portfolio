@@ -168,9 +168,13 @@ export default function Projects() {
   return (
     <section id="projects" className="relative overflow-hidden">
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-28">
-        <SectionHeading eyebrow="// DEPLOYED_BUILDS" title="Projects" accent="neon" />
+        <SectionHeading eyebrow="// DEPLOYED_BUILDS" title="Security Projects" accent="neon" />
 
-        <div className="mb-10 flex flex-wrap justify-center gap-3" role="group" aria-label="Project filters">
+        <div
+          className="mx-auto mb-12 flex w-fit max-w-full flex-wrap justify-center gap-2 rounded-xl border border-cyan-400/25 bg-[#061019]/90 p-2 shadow-[0_0_32px_rgba(34,211,238,0.12)] backdrop-blur-xl"
+          role="group"
+          aria-label="Project filters"
+        >
           {filters.map((filter) => {
             const active = filter === activeFilter;
             const count =
@@ -184,14 +188,22 @@ export default function Projects() {
                 type="button"
                 onClick={() => setActiveFilter(filter)}
                 aria-pressed={active}
-                className={`rounded-sm border px-5 py-2.5 font-mono text-[11px] uppercase tracking-widest transition-all duration-300 ${
+                className={`min-w-[118px] rounded-lg border px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.14em] transition-all duration-300 ${
                   active
-                    ? "border-neon bg-neon/10 text-neon shadow-neon-glow"
-                    : "border-white/15 bg-white/[0.025] text-white/55 hover:border-neon/45 hover:text-white"
+                    ? filter === "AI Security"
+                      ? "border-violet-400 bg-violet-500/20 text-violet-200 shadow-[0_0_22px_rgba(139,92,246,0.38)]"
+                      : "border-cyan-300 bg-cyan-400/20 text-cyan-100 shadow-[0_0_22px_rgba(34,211,238,0.38)]"
+                    : "border-white/25 bg-white/[0.07] text-white/80 hover:border-cyan-300/70 hover:bg-cyan-400/10 hover:text-cyan-100"
                 }`}
               >
                 {filter}
-                <span className="ml-2 text-[9px] opacity-60">[{count}]</span>
+                <span
+                  className={`ml-2 inline-flex min-w-6 justify-center rounded-full border px-1.5 py-0.5 text-[10px] ${
+                    active ? "border-current/50 bg-black/20 text-current" : "border-white/20 bg-black/30 text-white/65"
+                  }`}
+                >
+                  {count}
+                </span>
               </button>
             );
           })}
