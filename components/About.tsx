@@ -2,16 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ShieldCheck, Radar, Bug, Cpu, MapPin, Crosshair } from "lucide-react";
+import { MapPin, Crosshair } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import { profile } from "@/lib/data";
-
-const readouts = [
-  { icon: ShieldCheck, label: "Focus", value: "SOC & Incident Response" },
-  { icon: Radar, label: "Specialty", value: "Threat Hunting & SIEM" },
-  { icon: Bug, label: "Practice", value: "Pen Testing & Forensics" },
-  { icon: Cpu, label: "Edge", value: "AI-Assisted Security Automation" },
-];
 
 export default function About() {
   return (
@@ -35,66 +28,56 @@ export default function About() {
           <p className="font-body text-lg font-medium leading-8 text-white/85 sm:text-xl sm:leading-9">
             {profile.summary}
           </p>
-          <div className="mt-7 space-y-4 border-t border-neon/15 pt-5">
-            <div className="flex flex-wrap items-center gap-3">
-              <Crosshair className="text-neon drop-shadow-[0_0_7px_rgba(57,255,140,0.7)]" size={19} />
-              <span className="font-mono text-xs uppercase tracking-[0.18em] text-white/50 sm:text-sm">
-                Target roles
-              </span>
-              <span className="font-display text-base font-semibold tracking-wide text-neon text-glow-green sm:text-lg">
-                SOC Analyst · Security Analyst · AI Security Trainee
-              </span>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <MapPin className="text-neon drop-shadow-[0_0_7px_rgba(57,255,140,0.7)]" size={19} />
-              <span className="font-mono text-xs uppercase tracking-[0.18em] text-white/50 sm:text-sm">
-                Preferred locations
-              </span>
-              <span className="font-display text-base font-semibold tracking-wide text-neon text-glow-green sm:text-lg">
-                Coimbatore · Chennai · Bangalore
-              </span>
-            </div>
-          </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 30, scale: 0.985 }}
-          whileInView={{ opacity: 1, x: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8 }}
-          className="relative isolate flex min-h-[360px] items-center overflow-hidden rounded-2xl border border-neon/20 bg-[#020706]/75 shadow-[0_22px_70px_rgba(0,0,0,0.42),0_0_34px_rgba(57,255,140,0.08)] max-sm:-mx-2 max-sm:min-h-0 max-sm:rounded-xl"
-        >
-          <div className="pointer-events-none absolute left-2.5 top-2.5 z-10 h-12 w-12 border-l-2 border-t-2 border-neon/80" aria-hidden="true" />
-          <div className="pointer-events-none absolute bottom-2.5 right-2.5 z-10 h-12 w-12 border-b-2 border-r-2 border-neon/80" aria-hidden="true" />
-          <Image
-            src="/assets/vasanth-security-core.webp"
-            alt="Vasanth security core connecting SOC Operations, AI Security, Cybersecurity and Security Automation"
-            width={1680}
-            height={945}
-            sizes="(max-width: 1024px) 100vw, 640px"
-            className="h-auto w-full object-contain"
-            priority={false}
-          />
-        </motion.div>
-      </div>
+        <div className="flex min-w-0 flex-col gap-4">
+          <motion.div
+            initial={{ opacity: 0, x: 30, scale: 0.985 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8 }}
+            className="relative isolate flex min-h-[330px] items-center overflow-hidden rounded-2xl border border-neon/20 bg-[#020706]/75 shadow-[0_22px_70px_rgba(0,0,0,0.42),0_0_34px_rgba(57,255,140,0.08)] max-sm:-mx-2 max-sm:min-h-0 max-sm:rounded-xl"
+          >
+            <div className="pointer-events-none absolute left-2.5 top-2.5 z-10 h-12 w-12 border-l-2 border-t-2 border-neon/80" aria-hidden="true" />
+            <div className="pointer-events-none absolute bottom-2.5 right-2.5 z-10 h-12 w-12 border-b-2 border-r-2 border-neon/80" aria-hidden="true" />
+            <Image
+              src="/assets/vasanth-security-core.webp"
+              alt="Vasanth security core connecting SOC Operations, AI Security, Cybersecurity and Security Automation"
+              width={1680}
+              height={945}
+              sizes="(max-width: 1024px) 100vw, 640px"
+              className="h-auto w-full object-contain"
+              priority={false}
+            />
+          </motion.div>
 
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {readouts.map((item, i) => (
-            <motion.div
-              key={item.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card rounded-lg p-5"
-            >
-              <item.icon className="mb-3 text-neon" size={24} />
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
-                {item.label}
-              </p>
-              <p className="mt-1 font-display text-sm font-semibold text-white">{item.value}</p>
-            </motion.div>
-          ))}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.55 }}
+            className="border-l-2 border-neon/65 bg-gradient-to-r from-neon/[0.07] via-[#06110d]/70 to-transparent px-5 py-5 sm:px-7"
+          >
+            <div className="flex items-start gap-4">
+              <Crosshair className="mt-1 shrink-0 text-neon drop-shadow-[0_0_8px_rgba(57,255,140,0.65)]" size={24} />
+              <div>
+                <p className="font-mono text-[9px] uppercase tracking-[0.24em] text-white/45">Target roles</p>
+                <p className="mt-2 font-display text-lg font-semibold leading-relaxed tracking-wide text-white sm:text-xl">
+                  SOC Analyst <span className="text-neon">•</span> Security Analyst <span className="text-neon">•</span> AI Security Trainee
+                </p>
+              </div>
+            </div>
+            <div className="mt-5 flex items-start gap-4 border-t border-neon/10 pt-5">
+              <MapPin className="mt-1 shrink-0 text-neon drop-shadow-[0_0_8px_rgba(57,255,140,0.65)]" size={24} />
+              <div>
+                <p className="font-mono text-[9px] uppercase tracking-[0.24em] text-white/45">Preferred locations</p>
+                <p className="mt-2 font-display text-lg font-semibold tracking-wide text-neon text-glow-green sm:text-xl">
+                  Coimbatore <span className="text-white/35">•</span> Chennai <span className="text-white/35">•</span> Bangalore
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
