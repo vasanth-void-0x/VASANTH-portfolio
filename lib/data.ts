@@ -8,7 +8,7 @@ export const profile = {
   linkedin: "https://linkedin.com/in/vasanth-2k4",
   resumePath: "/Vasanth_Kumar_Resume.pdf",
   summary:
-    "Cybersecurity graduate with hands-on experience in SOC operations, SIEM monitoring, alert triage, threat hunting, incident response, and security automation through practical home labs and cybersecurity projects. Seeking an entry-level SOC Analyst, Security Analyst, or Cybersecurity Analyst role.",
+    "Cybersecurity and Digital Forensics graduate focused on SOC operations, AI security, and security automation. Hands-on experience includes SIEM monitoring, alert triage, threat hunting, incident response, vulnerability assessment, and building practical security tools across home labs and real-world project simulations. Ready to contribute as an entry-level SOC Analyst, Security Analyst, or Cybersecurity Analyst.",
 };
 
 export const skillGroups = [

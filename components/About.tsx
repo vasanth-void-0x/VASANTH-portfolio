@@ -50,7 +50,7 @@ export default function About() {
             {profile.summary}
           </p>
           <p className="mt-4 font-mono text-xs uppercase tracking-widest text-white/40">
-            status: actively seeking SOC / Security Analyst roles — Chennai · Coimbatore · Remote
+            preferred locations: Coimbatore · Chennai · Bangalore
           </p>
         </motion.div>
 
