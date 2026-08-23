@@ -7,6 +7,7 @@ import {
   Cpu,
   Crosshair,
   Fingerprint,
+  Laptop,
   MonitorDot,
   Network,
   ShieldCheck,
