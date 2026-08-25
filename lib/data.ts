@@ -1,7 +1,7 @@
 export const profile = {
   name: "Vasanth Kumar",
   role: "Cybersecurity Graduate",
-  tagline: "SOC Analyst • Security Analyst • AI Security & Automation",
+  tagline: "SOC Analyst • Security Analyst • AI Security • Security Automation",
   email: "iamvasanth2k4@gmail.com",
   phone: "+91 9786183898",
   github: "https://github.com/vasanth-void-0x",
