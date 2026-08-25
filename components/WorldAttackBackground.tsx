@@ -92,7 +92,7 @@ export default function WorldAttackBackground() {
         return (
           <div
             key={point.id}
-            className="hero-map-node hero-parallax-node"
+            className={`hero-map-node hero-parallax-node${point.india ? " hero-map-node-india" : ""}`}
             style={{
               left: `${position.x}%`,
               top: `${position.y}%`,
@@ -101,6 +101,7 @@ export default function WorldAttackBackground() {
           >
             <span className="hero-node-dot" />
             <span className="hero-node-ring" />
+            {point.india && <span className="hero-location-connector" />}
             <span className="hero-node-label">
               <strong>{point.label}</strong>
               <small>{point.detail}</small>
