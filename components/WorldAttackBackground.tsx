@@ -97,23 +97,64 @@ export default function WorldAttackBackground() {
               className={point.india ? "hero-svg-node hero-svg-node-location" : "hero-svg-node"}
               transform={`translate(${x} ${y})`}
             >
-              <circle r={point.india ? 5.5 : 4} className="hero-svg-node-dot" />
-              <circle r={point.india ? 14 : 10} className="hero-svg-node-ring" />
+              <circle
+                r={point.india ? 4.5 : 3.3}
+                fill={point.india ? "#06f3e7" : "#39ff8c"}
+                style={{ filter: `drop-shadow(0 0 5px ${point.india ? "#06f3e7" : "#39ff8c"})` }}
+              />
+              <circle
+                r={point.india ? 11 : 8}
+                fill="none"
+                stroke={point.india ? "#06f3e7" : "#39ff8c"}
+                strokeWidth="1"
+                opacity="0.5"
+                vectorEffect="non-scaling-stroke"
+              />
 
               {point.india ? (
                 <>
-                  <path d="M 7 -2 L 34 -24 L 82 -24" className="hero-svg-location-line" />
-                  <text x="88" y="-27" className="hero-svg-location-title">
+                  <path
+                    d="M 6 -2 L 31 -22 L 76 -22"
+                    fill="none"
+                    stroke="#06f3e7"
+                    strokeWidth="1.25"
+                    vectorEffect="non-scaling-stroke"
+                  />
+                  <text
+                    x="82"
+                    y="-25"
+                    fill="#06f3e7"
+                    fontFamily="monospace"
+                    fontSize="9"
+                    fontWeight="800"
+                    letterSpacing="0.8"
+                  >
                     {point.label}
                   </text>
-                  <text x="88" y="-13" className="hero-svg-location-detail">
+                  <text
+                    x="82"
+                    y="-12"
+                    fill="#bfffee"
+                    fontFamily="monospace"
+                    fontSize="7"
+                    fontWeight="600"
+                    letterSpacing="0.6"
+                  >
                     {point.detail}
                   </text>
                 </>
               ) : (
-                <text x="11" y="-5" className="hero-svg-node-label">
-                  <tspan x="11">{point.label}</tspan>
-                  <tspan x="11" dy="11" className="hero-svg-node-detail">
+                <text
+                  x="10"
+                  y="-5"
+                  fill="#39ff8c"
+                  fontFamily="monospace"
+                  fontSize="8"
+                  fontWeight="700"
+                  letterSpacing="0.5"
+                >
+                  <tspan x="10">{point.label}</tspan>
+                  <tspan x="10" dy="10" fill="#9bcbb0" fontSize="6.5" fontWeight="500">
                     {point.detail}
                   </tspan>
                 </text>
