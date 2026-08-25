@@ -19,7 +19,7 @@ const points: Point[] = [
   { id: "brazil", lon: -47.8825, lat: -15.7942, label: "BRAZIL", detail: "SUSPICIOUS ACTIVITY" },
   { id: "germany", lon: 13.405, lat: 52.52, label: "GERMANY", detail: "MALICIOUS IP" },
   { id: "russia", lon: 37.6173, lat: 55.7558, label: "RUSSIA", detail: "BRUTE FORCE" },
-  { id: "india", lon: 76.9558, lat: 11.0168, label: "YOUR LOCATION", detail: "COIMBATORE", india: true },
+  { id: "india", lon: 76.9622, lat: 11.01615, label: "YOUR LOCATION", detail: "COIMBATORE", india: true },
   { id: "japan", lon: 139.6917, lat: 35.6895, label: "JAPAN", detail: "PORT SCAN" },
   { id: "australia", lon: 149.13, lat: -35.2809, label: "AUSTRALIA", detail: "UNUSUAL TRAFFIC" },
 ];
@@ -85,30 +85,43 @@ export default function WorldAttackBackground() {
             </g>
           );
         })}
-      </svg>
 
-      {points.map((point, index) => {
-        const position = projectPoint(point.lon, point.lat);
-        return (
-          <div
-            key={point.id}
-            className={`hero-map-node hero-parallax-node${point.india ? " hero-map-node-india" : ""}`}
-            style={{
-              left: `${position.x}%`,
-              top: `${position.y}%`,
-              animationDelay: `${index * 0.22}s`,
-            }}
-          >
-            <span className="hero-node-dot" />
-            <span className="hero-node-ring" />
-            {point.india && <span className="hero-location-connector" />}
-            <span className="hero-node-label">
-              <strong>{point.label}</strong>
-              <small>{point.detail}</small>
-            </span>
-          </div>
-        );
-      })}
+        {points.map((point) => {
+          const position = projectPoint(point.lon, point.lat);
+          const x = position.x * 10;
+          const y = position.y * 5;
+
+          return (
+            <g
+              key={point.id}
+              className={point.india ? "hero-svg-node hero-svg-node-location" : "hero-svg-node"}
+              transform={`translate(${x} ${y})`}
+            >
+              <circle r={point.india ? 5.5 : 4} className="hero-svg-node-dot" />
+              <circle r={point.india ? 14 : 10} className="hero-svg-node-ring" />
+
+              {point.india ? (
+                <>
+                  <path d="M 7 -2 L 34 -24 L 82 -24" className="hero-svg-location-line" />
+                  <text x="88" y="-27" className="hero-svg-location-title">
+                    {point.label}
+                  </text>
+                  <text x="88" y="-13" className="hero-svg-location-detail">
+                    {point.detail}
+                  </text>
+                </>
+              ) : (
+                <text x="11" y="-5" className="hero-svg-node-label">
+                  <tspan x="11">{point.label}</tspan>
+                  <tspan x="11" dy="11" className="hero-svg-node-detail">
+                    {point.detail}
+                  </tspan>
+                </text>
+              )}
+            </g>
+          );
+        })}
+      </svg>
 
       <div className="hero-ai-chip hero-parallax-hud">
         <img src="/assets/ai-security-chip-green.png" alt="" className="hero-ai-chip-image" />
