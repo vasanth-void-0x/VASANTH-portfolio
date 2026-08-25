@@ -261,6 +261,28 @@ body {
   color: #06f3e7;
 }
 
+.hero-location-connector {
+  position: absolute;
+  left: 8px;
+  top: -30px;
+  width: 52px;
+  height: 30px;
+  border-left: 1px solid rgba(6, 243, 231, 0.72);
+  border-top: 1px solid rgba(6, 243, 231, 0.72);
+  filter: drop-shadow(0 0 4px rgba(6, 243, 231, 0.65));
+  pointer-events: none;
+}
+
+.hero-map-node-india .hero-node-label {
+  left: 67px;
+  top: -42px;
+  padding-left: 1px;
+}
+
+.hero-map-node-india .hero-node-label small {
+  color: rgba(220, 255, 235, 0.62);
+}
+
 .hero-hud {
   position: absolute;
   z-index: 3;
