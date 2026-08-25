@@ -19,7 +19,7 @@ const points: Point[] = [
   { id: "brazil", lon: -51, lat: -10, label: "BRAZIL", detail: "SUSPICIOUS ACTIVITY" },
   { id: "germany", lon: 10.4, lat: 51.1, label: "GERMANY", detail: "MALICIOUS IP" },
   { id: "russia", lon: 90, lat: 60, label: "RUSSIA", detail: "BRUTE FORCE" },
-  { id: "india", lon: 78.96, lat: 22.59, label: "INDIA", detail: "SOC MONITORING", india: true },
+  { id: "india", lon: 76.9558, lat: 11.0168, label: "YOUR LOCATION", detail: "COIMBATORE", india: true },
   { id: "japan", lon: 138, lat: 37, label: "JAPAN", detail: "PORT SCAN" },
   { id: "australia", lon: 134, lat: -25, label: "AUSTRALIA", detail: "UNUSUAL TRAFFIC" },
 ];
@@ -117,7 +117,7 @@ export default function WorldAttackBackground() {
         <p>// SYSTEM_STATUS</p>
         <span>&gt; Connecting to SIEM... OK</span>
         <span>&gt; Loading Threat Intel... OK</span>
-        <span>&gt; Monitoring India Node... OK</span>
+        <span>&gt; Monitoring Coimbatore Node... OK</span>
         <strong>STATUS: OPERATIONAL</strong>
       </div>
 
