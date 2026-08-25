@@ -263,18 +263,31 @@ body {
 
 .hero-location-connector {
   position: absolute;
-  left: 8px;
-  top: -30px;
-  width: 52px;
-  height: 30px;
-  border-left: 1px solid rgba(6, 243, 231, 0.72);
-  border-top: 1px solid rgba(6, 243, 231, 0.72);
-  filter: drop-shadow(0 0 4px rgba(6, 243, 231, 0.65));
+  left: 7px;
+  top: -3px;
+  width: 46px;
+  height: 1px;
+  background: rgba(6, 243, 231, 0.82);
+  filter: drop-shadow(0 0 4px rgba(6, 243, 231, 0.68));
+  transform: rotate(-38deg);
+  transform-origin: left center;
   pointer-events: none;
 }
 
+.hero-location-connector::after {
+  content: "";
+  position: absolute;
+  left: 46px;
+  top: 0;
+  width: 34px;
+  height: 1px;
+  background: rgba(6, 243, 231, 0.82);
+  transform: rotate(38deg);
+  transform-origin: left center;
+}
+
 .hero-map-node-india .hero-node-label {
-  left: 67px;
+  left: 78px;
   top: -42px;
   padding-left: 1px;
 }
