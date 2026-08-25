@@ -15,13 +15,13 @@ const projectPoint = (lon: number, lat: number) => ({
 });
 
 const points: Point[] = [
-  { id: "usa", lon: -100, lat: 38, label: "UNITED STATES", detail: "ATTACK SOURCE" },
-  { id: "brazil", lon: -51, lat: -10, label: "BRAZIL", detail: "SUSPICIOUS ACTIVITY" },
-  { id: "germany", lon: 10.4, lat: 51.1, label: "GERMANY", detail: "MALICIOUS IP" },
-  { id: "russia", lon: 90, lat: 60, label: "RUSSIA", detail: "BRUTE FORCE" },
+  { id: "usa", lon: -77.0369, lat: 38.9072, label: "UNITED STATES", detail: "ATTACK SOURCE" },
+  { id: "brazil", lon: -47.8825, lat: -15.7942, label: "BRAZIL", detail: "SUSPICIOUS ACTIVITY" },
+  { id: "germany", lon: 13.405, lat: 52.52, label: "GERMANY", detail: "MALICIOUS IP" },
+  { id: "russia", lon: 37.6173, lat: 55.7558, label: "RUSSIA", detail: "BRUTE FORCE" },
   { id: "india", lon: 76.9558, lat: 11.0168, label: "YOUR LOCATION", detail: "COIMBATORE", india: true },
-  { id: "japan", lon: 138, lat: 37, label: "JAPAN", detail: "PORT SCAN" },
-  { id: "australia", lon: 134, lat: -25, label: "AUSTRALIA", detail: "UNUSUAL TRAFFIC" },
+  { id: "japan", lon: 139.6917, lat: 35.6895, label: "JAPAN", detail: "PORT SCAN" },
+  { id: "australia", lon: 149.13, lat: -35.2809, label: "AUSTRALIA", detail: "UNUSUAL TRAFFIC" },
 ];
 
 const routes = [
