@@ -98,31 +98,47 @@ export default function WorldAttackBackground() {
               transform={`translate(${x} ${y})`}
             >
               <circle
-                r={point.india ? 4.5 : 3.3}
+                r={point.india ? 2.8 : 2.7}
                 fill={point.india ? "#06f3e7" : "#39ff8c"}
-                style={{ filter: `drop-shadow(0 0 5px ${point.india ? "#06f3e7" : "#39ff8c"})` }}
-              />
+                style={{ filter: `drop-shadow(0 0 4px ${point.india ? "#06f3e7" : "#39ff8c"})` }}
+              >
+                {point.india && (
+                  <animate
+                    attributeName="opacity"
+                    values="1;0.35;1"
+                    dur="1.35s"
+                    repeatCount="indefinite"
+                  />
+                )}
+              </circle>
               <circle
-                r={point.india ? 11 : 8}
+                r={point.india ? 7 : 6.5}
                 fill="none"
                 stroke={point.india ? "#06f3e7" : "#39ff8c"}
-                strokeWidth="1"
-                opacity="0.5"
+                strokeWidth="0.9"
+                opacity="0.45"
                 vectorEffect="non-scaling-stroke"
-              />
+              >
+                {point.india && (
+                  <>
+                    <animate attributeName="r" values="6;11;6" dur="1.8s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.65;0.08;0.65" dur="1.8s" repeatCount="indefinite" />
+                  </>
+                )}
+              </circle>
 
               {point.india ? (
                 <>
                   <path
-                    d="M 6 -2 L 31 -22 L 76 -22"
+                    d="M 5 -2 L 29 -22 L 116 -22"
                     fill="none"
                     stroke="#06f3e7"
-                    strokeWidth="1.25"
+                    strokeWidth="1"
                     vectorEffect="non-scaling-stroke"
                   />
                   <text
-                    x="82"
-                    y="-25"
+                    x="36"
+                    y="-27"
                     fill="#06f3e7"
                     fontFamily="monospace"
                     fontSize="9"
@@ -132,8 +148,8 @@ export default function WorldAttackBackground() {
                     {point.label}
                   </text>
                   <text
-                    x="82"
-                    y="-12"
+                    x="36"
+                    y="-10"
                     fill="#bfffee"
                     fontFamily="monospace"
                     fontSize="7"
