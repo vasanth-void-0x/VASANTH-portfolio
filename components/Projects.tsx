@@ -73,6 +73,7 @@ const additionalProjects: Project[] = [
     tools: ["Python", "LLM Security", "RAG Security", "MCP", "Prompt Injection", "CLI"],
     image: "/projects/ragexploit-dashboard.webp",
     github: "https://github.com/vasanth-void-0x/RAGExploit",
+    demo: "https://rag-exploit-scanner.vercel.app/",
     caseStudy: {
       category: "AI / RAG SECURITY",
       objective: "Identify retrieval-layer weaknesses before they can influence model behavior or expose protected information.",
