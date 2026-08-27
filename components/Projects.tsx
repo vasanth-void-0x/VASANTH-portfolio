@@ -134,11 +134,11 @@ const categoryById: Record<string, Exclude<ProjectFilter, "All">> = {
 
 const currentById = Object.fromEntries(projects.map((project) => [project.id, project]));
 const allProjects: Project[] = [
+  currentById["aegis-flow"],
   ...additionalProjects.filter((project) => project.id === "ragexploit"),
   ...additionalProjects.filter((project) => project.id === "ai-red-team-agent"),
   currentById["agent-shield"],
   currentById.itrap,
-  currentById["aegis-flow"],
   currentById["dfir-copilot"],
   currentById["chain-guard"],
   ...additionalProjects.filter((project) => project.id === "soc-alert-escalation"),

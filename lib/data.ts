@@ -255,11 +255,13 @@ export const projects: Project[] = [
   },
   {
     id: "aegis-flow",
-    title: "AegisFlow — AI-Assisted SOC Automation",
+    title: "AegisFlow — SOC Investigation & Response Automation",
     description:
-      "Designed an n8n-driven SOC workflow that receives security alerts, enriches and scores them, uses AI for analyst-ready context, and forwards structured events to the investigation workflow.",
-    tools: ["n8n", "Webhooks", "Splunk", "Groq API", "REST APIs", "Security Automation"],
+      "Built and deployed a full-stack SOC automation platform for alert ingestion, threat-intelligence enrichment, AI triage, RAG-assisted investigation, MCP security tools, human approval, and simulated response.",
+    tools: ["React", "TypeScript", "FastAPI", "n8n", "Groq API", "MCP", "RAG"],
     image: "/projects/aegisflow-soc-automation.jpg",
+    github: "https://github.com/vasanth-void-0x/AegisFlow-SOC-Automation",
+    demo: "https://aegisflow-soc-automation.vercel.app/",
     caseStudy: {
       category: "SOAR / SECURITY AUTOMATION",
       objective: "Reduce repetitive Tier-1 triage work by connecting alert intake, normalization, enrichment, AI-assisted summarization, and analyst handoff.",
