@@ -3,6 +3,7 @@
 // Project showcase: 6 cybersecurity builds + 3 AI security builds.
 
 import { useState } from "react";
+import { ExternalLink, Flag, ShieldCheck } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 import ProjectCard from "./ProjectCard";
 import CaseStudyModal from "./CaseStudyModal";
@@ -139,6 +140,27 @@ const featuredIds = ["aegis-flow", "ragexploit", "agent-shield"];
 const engineeringIds = ["dfir-copilot", "itrap", "chain-guard"];
 const labIds = ["threat-hunting-dashboard", "soc-alert-escalation"];
 
+const labPlatforms = [
+  {
+    title: "TryHackMe",
+    role: "Hands-on Security Labs",
+    description: "Practical learning across SOC operations, threat analysis, networking, Linux, and offensive security fundamentals.",
+    href: "https://tryhackme.com/",
+    cta: "View TryHackMe",
+    icon: ShieldCheck,
+    accent: "neon",
+  },
+  {
+    title: "VulnHub",
+    role: "CTF Player",
+    description: "Practicing enumeration, vulnerability discovery, exploitation, privilege escalation, and evidence-driven CTF walkthroughs.",
+    href: "https://www.vulnhub.com/",
+    cta: "View VulnHub",
+    icon: Flag,
+    accent: "volt",
+  },
+] as const;
+
 const selectProjects = (ids: string[]) => ids.map((id) => projectById[id]).filter(Boolean);
 
 export default function Projects() {
@@ -223,6 +245,51 @@ export default function Projects() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(57,255,140,0.07),transparent_30%),radial-gradient(circle_at_82%_70%,rgba(59,130,246,0.05),transparent_28%)]" />
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-24">
         <SectionHeading eyebrow="// HANDS_ON_SECURITY_OPERATIONS" title="Security Labs" accent="neon" />
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {labPlatforms.map((platform) => {
+            const Icon = platform.icon;
+            const isNeon = platform.accent === "neon";
+
+            return (
+              <article
+                key={platform.title}
+                className={`group relative overflow-hidden border bg-[#040b08]/90 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 ${
+                  isNeon
+                    ? "border-neon/25 hover:border-neon/60 hover:shadow-neon-glow"
+                    : "border-volt/25 hover:border-volt/60 hover:shadow-[0_0_28px_rgba(59,130,246,0.16)]"
+                }`}
+              >
+                <div className={`absolute inset-x-0 top-0 h-px ${isNeon ? "bg-neon/70" : "bg-volt/70"}`} />
+                <div className="flex items-start justify-between gap-4">
+                  <div className={`flex h-11 w-11 items-center justify-center border bg-black/30 ${isNeon ? "border-neon/35 text-neon" : "border-volt/35 text-volt"}`}>
+                    <Icon size={21} aria-hidden="true" />
+                  </div>
+                  <span className={`font-mono text-[9px] uppercase tracking-[0.22em] ${isNeon ? "text-neon" : "text-volt"}`}>
+                    {platform.role}
+                  </span>
+                </div>
+
+                <h3 className="mt-6 font-display text-2xl font-semibold text-white">{platform.title}</h3>
+                <p className="mt-3 min-h-[4.5rem] text-sm leading-6 text-white/58">{platform.description}</p>
+
+                <a
+                  href={platform.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-6 inline-flex items-center gap-2 border px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors ${
+                    isNeon
+                      ? "border-neon/35 text-neon hover:bg-neon/10"
+                      : "border-volt/35 text-volt hover:bg-volt/10"
+                  }`}
+                >
+                  {platform.cta}
+                  <ExternalLink size={13} aria-hidden="true" />
+                </a>
+              </article>
+            );
+          })}
+        </div>
 
         <div className="mt-10">
           <div className="mb-5 flex items-end justify-between border-b border-white/10 pb-4">
