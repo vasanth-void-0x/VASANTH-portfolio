@@ -156,10 +156,11 @@ export default function Projects() {
   };
 
   return (
+    <>
     <section id="projects" className="relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(57,255,140,0.06),transparent_34%),radial-gradient(circle_at_85%_45%,rgba(168,85,247,0.05),transparent_28%)]" />
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading eyebrow="// SECURITY_PRODUCT_ARSENAL" title="Security Products & Labs" accent="neon" />
+        <SectionHeading eyebrow="// SECURITY_PROJECT_ARSENAL" title="Security Projects" accent="neon" />
 
         <div className="mb-8 mt-4 flex flex-col gap-2 border-l-2 border-neon/55 pl-4">
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-neon">Deployed Security Products</span>
@@ -215,7 +216,15 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-16">
+      </div>
+    </section>
+
+    <section id="labs" className="relative scroll-mt-16 overflow-hidden border-y border-neon/10 bg-[#020806]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(57,255,140,0.07),transparent_30%),radial-gradient(circle_at_82%_70%,rgba(59,130,246,0.05),transparent_28%)]" />
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-24">
+        <SectionHeading eyebrow="// HANDS_ON_SECURITY_OPERATIONS" title="Security Labs" accent="neon" />
+
+        <div className="mt-10">
           <div className="mb-5 flex items-end justify-between border-b border-white/10 pb-4">
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-neon">SOC Labs & Investigations</p>
@@ -237,8 +246,9 @@ export default function Projects() {
           </div>
         </div>
       </div>
-
-      <CaseStudyModal project={selected} onClose={() => setSelected(null)} onNavigate={navigate} />
     </section>
+
+    <CaseStudyModal project={selected} onClose={() => setSelected(null)} onNavigate={navigate} />
+    </>
   );
 }
