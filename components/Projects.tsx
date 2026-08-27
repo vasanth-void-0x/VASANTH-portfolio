@@ -2,13 +2,11 @@
 
 // Project showcase: 6 cybersecurity builds + 3 AI security builds.
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import SectionHeading from "./SectionHeading";
 import ProjectCard from "./ProjectCard";
 import CaseStudyModal from "./CaseStudyModal";
 import { projects, type Project } from "@/lib/data";
-
-type ProjectFilter = "All" | "Cybersecurity" | "AI Security";
 
 const additionalProjects: Project[] = [
   {
@@ -121,7 +119,7 @@ const additionalProjects: Project[] = [
   },
 ];
 
-const categoryById: Record<string, Exclude<ProjectFilter, "All">> = {
+const categoryById: Record<string, "Cybersecurity" | "AI Security"> = {
   itrap: "Cybersecurity",
   "aegis-flow": "Cybersecurity",
   "dfir-copilot": "Cybersecurity",
@@ -134,98 +132,113 @@ const categoryById: Record<string, Exclude<ProjectFilter, "All">> = {
 };
 
 const currentById = Object.fromEntries(projects.map((project) => [project.id, project]));
-const allProjects: Project[] = [
-  currentById["aegis-flow"],
-  ...additionalProjects.filter((project) => project.id === "ragexploit"),
-  ...additionalProjects.filter((project) => project.id === "ai-red-team-agent"),
-  currentById["agent-shield"],
-  currentById.itrap,
-  currentById["dfir-copilot"],
-  currentById["chain-guard"],
-  ...additionalProjects.filter((project) => project.id === "soc-alert-escalation"),
-  ...additionalProjects.filter((project) => project.id === "threat-hunting-dashboard"),
-].filter(Boolean) as Project[];
+const additionalById = Object.fromEntries(additionalProjects.map((project) => [project.id, project]));
+const projectById: Record<string, Project> = { ...currentById, ...additionalById };
 
-const filters: ProjectFilter[] = ["All", "Cybersecurity", "AI Security"];
+const featuredIds = ["aegis-flow", "ragexploit", "agent-shield"];
+const engineeringIds = ["dfir-copilot", "itrap", "chain-guard"];
+const labIds = ["threat-hunting-dashboard", "soc-alert-escalation"];
+
+const selectProjects = (ids: string[]) => ids.map((id) => projectById[id]).filter(Boolean);
 
 export default function Projects() {
   const [selected, setSelected] = useState<Project | null>(null);
-  const [activeFilter, setActiveFilter] = useState<ProjectFilter>("All");
-
-  const visibleProjects = useMemo(
-    () =>
-      activeFilter === "All"
-        ? allProjects
-        : allProjects.filter((project) => categoryById[project.id] === activeFilter),
-    [activeFilter],
-  );
+  const featuredProjects = selectProjects(featuredIds);
+  const engineeringProjects = selectProjects(engineeringIds);
+  const labProjects = selectProjects(labIds);
+  const upcomingProject = projectById["ai-red-team-agent"];
+  const navigableProjects = [...featuredProjects, upcomingProject, ...engineeringProjects, ...labProjects].filter(Boolean);
 
   const navigate = (direction: -1 | 1) => {
     if (!selected) return;
-    const index = allProjects.findIndex((project) => project.id === selected.id);
-    setSelected(allProjects[(index + direction + allProjects.length) % allProjects.length]);
+    const index = navigableProjects.findIndex((project) => project.id === selected.id);
+    setSelected(navigableProjects[(index + direction + navigableProjects.length) % navigableProjects.length]);
   };
 
   return (
     <section id="projects" className="relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(57,255,140,0.06),transparent_34%),radial-gradient(circle_at_85%_45%,rgba(168,85,247,0.05),transparent_28%)]" />
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading eyebrow="// DEPLOYED_BUILDS" title="Security Projects" accent="neon" />
+        <SectionHeading eyebrow="// SECURITY_PRODUCT_ARSENAL" title="Security Products & Labs" accent="neon" />
 
-        <div
-        className="mx-auto mb-10 flex w-fit max-w-full flex-wrap justify-center gap-1 rounded-lg border border-neon/20 bg-[#07110d]/85 p-1 shadow-[0_0_20px_rgba(57,255,140,0.08)] backdrop-blur-xl"
-          role="group"
-          aria-label="Project filters"
-        >
-          {filters.map((filter) => {
-            const active = filter === activeFilter;
-            const count =
-              filter === "All"
-                ? allProjects.length
-                : allProjects.filter((project) => categoryById[project.id] === filter).length;
-
-            return (
-              <button
-                key={filter}
-                type="button"
-                onClick={() => setActiveFilter(filter)}
-                aria-pressed={active}
-            className={`min-w-[86px] rounded-md border px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.1em] transition-all duration-300 sm:min-w-[104px] sm:text-[11px] ${
-              active
-                ? "border-neon/70 bg-neon/15 text-neon shadow-[inset_0_0_12px_rgba(57,255,140,0.08),0_0_14px_rgba(57,255,140,0.18)]"
-                : "border-neon/10 bg-transparent text-white/55 hover:border-neon/35 hover:bg-neon/[0.05] hover:text-white/80"
-            }`}
-              >
-                {filter}
-                <span
-          className={`ml-1.5 inline-flex min-w-5 justify-center rounded-full border px-1 py-px text-[9px] ${
-            active ? "border-neon/40 bg-neon/10 text-neon" : "border-white/10 bg-black/20 text-white/45"
-          }`}
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
+        <div className="mb-8 mt-4 flex flex-col gap-2 border-l-2 border-neon/55 pl-4">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-neon">Deployed Security Products</span>
+          <p className="max-w-2xl text-sm leading-relaxed text-white/48">
+            Production-facing platforms across SOC automation, RAG security testing, and agentic AI runtime defense.
+          </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleProjects.map((project, index) => (
+        <div className="grid items-stretch gap-6 lg:grid-cols-3">
+          {featuredProjects.map((project, index) => (
             <ProjectCard
               key={project.id}
               project={project}
               index={index}
               category={categoryById[project.id]}
+              variant="featured"
+              status={project.id === "aegis-flow" ? "SOC Flagship" : project.id === "ragexploit" ? "AI Security" : "Runtime Defense"}
               onCaseStudy={setSelected}
             />
           ))}
         </div>
+
+        {upcomingProject ? (
+          <div className="mt-12">
+            <ProjectCard
+              project={upcomingProject}
+              index={0}
+              category="AI Security"
+              variant="upcoming"
+              onCaseStudy={setSelected}
+            />
+          </div>
+        ) : null}
+
+        <div className="mt-16 flex items-end justify-between gap-4 border-b border-white/10 pb-4">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-volt">Security Engineering</p>
+            <h3 className="mt-1 font-display text-xl font-semibold text-white">Detection, Forensics & DevSecOps</h3>
+          </div>
+          <span className="hidden font-mono text-[9px] uppercase tracking-widest text-white/30 sm:block">03 Builds</span>
+        </div>
+
+        <div className="mt-6 grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {engineeringProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              category={categoryById[project.id]}
+              variant="engineering"
+              onCaseStudy={setSelected}
+            />
+          ))}
+        </div>
+
+        <div className="mt-16">
+          <div className="mb-5 flex items-end justify-between border-b border-white/10 pb-4">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-neon">SOC Labs & Investigations</p>
+              <h3 className="mt-1 font-display text-xl font-semibold text-white">Hands-on Analyst Workflows</h3>
+            </div>
+            <span className="hidden font-mono text-[9px] uppercase tracking-widest text-white/30 sm:block">Evidence-led</span>
+          </div>
+          <div className="grid gap-3 lg:grid-cols-2">
+            {labProjects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                category={categoryById[project.id]}
+                variant="lab"
+                onCaseStudy={setSelected}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
-      <CaseStudyModal
-        project={selected}
-        onClose={() => setSelected(null)}
-        onNavigate={navigate}
-      />
+      <CaseStudyModal project={selected} onClose={() => setSelected(null)} onNavigate={navigate} />
     </section>
   );
 }
