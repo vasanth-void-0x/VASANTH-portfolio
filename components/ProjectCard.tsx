@@ -36,26 +36,26 @@ export default function ProjectCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.45, delay: Math.min(index, 2) * 0.1 }}
       whileHover={isLab ? undefined : { y: -5 }}
-      className={`project-card hud-corners group relative overflow-hidden border bg-[#040b08]/90 backdrop-blur-xl transition-all duration-300 ${
+      className={`${isLab || isUpcoming ? "" : "project-card"} hud-corners group relative overflow-hidden border bg-[#040b08]/90 backdrop-blur-xl transition-all duration-300 ${
         isUpcoming
-          ? "grid min-h-[330px] border-orange-400/35 shadow-[0_0_45px_rgba(249,115,22,0.08)] lg:grid-cols-[1.05fr_0.95fr]"
+          ? "grid border-orange-400/35 shadow-[0_0_45px_rgba(249,115,22,0.08)] lg:min-h-[430px] lg:grid-cols-[1.08fr_0.92fr]"
           : isFeatured
             ? "flex h-full flex-col border-neon/25 hover:border-neon/60 hover:shadow-neon-glow"
             : isLab
-              ? "flex items-center gap-4 border-white/10 p-4 hover:border-neon/35"
+              ? "flex min-h-[96px] items-center gap-5 border-neon/20 bg-gradient-to-r from-neon/[0.045] to-transparent p-5 hover:border-neon/50 hover:bg-neon/[0.055]"
               : "flex h-full flex-col border-volt/20 hover:border-volt/50"
       }`}
       style={{ clipPath: "polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px))" }}
     >
       {isUpcoming ? (
         <>
-          <div className="relative min-h-[240px] overflow-hidden border-b border-orange-400/20 lg:border-b-0 lg:border-r">
+          <div className="relative aspect-[3/2] overflow-hidden border-b border-orange-400/20 bg-black/60 lg:aspect-auto lg:min-h-[430px] lg:border-b-0 lg:border-r">
             {!imgError ? (
               <img
                 src={project.image}
                 alt={`${project.title} concept preview`}
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover brightness-[0.78] contrast-110 transition-transform duration-700 group-hover:scale-[1.025]"
+                className="absolute inset-0 h-full w-full object-contain brightness-[0.94] contrast-110 transition-transform duration-700 group-hover:scale-[1.012]"
                 onError={() => setImgError(true)}
               />
             ) : (
@@ -63,16 +63,16 @@ export default function ProjectCard({
                 <Radar size={54} />
               </div>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#090504] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#090504]" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#090504]/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#090504]/70" />
           </div>
-          <div className="relative flex flex-col justify-center p-7 sm:p-9">
+          <div className="relative flex flex-col justify-center p-7 sm:p-10 lg:p-11">
             <div className="absolute right-6 top-6 h-20 w-20 rounded-full bg-orange-500/10 blur-2xl" />
             <span className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-orange-400/45 bg-orange-500/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-orange-300">
               <Flame size={13} className="text-orange-400" /> Upcoming · Biggest Build
             </span>
             <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal">AI Red Teaming Platform</p>
-            <h3 className="mt-2 font-display text-2xl font-semibold text-white sm:text-3xl">{project.title}</h3>
-            <p className="mt-4 max-w-xl font-body text-sm leading-7 text-white/68">{project.description}</p>
+            <h3 className="mt-3 font-display text-3xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-4xl lg:text-[2.65rem]">{project.title}</h3>
+            <p className="mt-5 max-w-xl font-body text-base leading-7 text-white/72">{project.description}</p>
             <div className="mt-5 flex flex-wrap gap-2">
               {project.tools.slice(0, 6).map((tool) => (
                 <span key={tool} className="rounded-full border border-orange-300/20 bg-orange-300/[0.04] px-2.5 py-1 font-mono text-[10px] text-orange-100/75">
@@ -96,17 +96,17 @@ export default function ProjectCard({
         </>
       ) : isLab ? (
         <>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-neon/25 bg-neon/[0.06] font-mono text-xs text-neon">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-neon/35 bg-neon/[0.08] font-mono text-sm font-bold text-neon shadow-[0_0_18px_rgba(57,255,140,0.08)]">
             {String(index + 1).padStart(2, "0")}
           </span>
           <div className="min-w-0 flex-1">
-            <h3 className="truncate font-display text-sm font-semibold text-white">{project.title}</h3>
-            <p className="mt-1 line-clamp-1 text-xs text-white/45">{project.description}</p>
+            <h3 className="font-display text-base font-semibold leading-snug text-white sm:text-lg">{project.title}</h3>
+            <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-white/55">{project.description}</p>
           </div>
           <button
             type="button"
             onClick={() => onCaseStudy(project)}
-            className="shrink-0 rounded-sm border border-neon/20 px-3 py-2 font-mono text-[9px] uppercase tracking-widest text-neon transition-colors hover:bg-neon/10"
+            className="shrink-0 rounded-sm border border-neon/30 px-4 py-2.5 font-mono text-[10px] font-bold uppercase tracking-widest text-neon transition-colors hover:bg-neon/10"
             aria-label={`View ${project.title} case study`}
           >
             View <ExternalLink size={11} className="ml-1 inline" />
