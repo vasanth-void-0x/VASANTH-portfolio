@@ -255,7 +255,7 @@ export const projects: Project[] = [
   },
   {
     id: "blueorch",
-    title: "BlueOrch — AI-Powered SOC Automation MVP",
+    title: "BlueOrch — SOC Automation MVP",
     description:
       "Built and deployed an end-to-end SOC automation MVP with telemetry ingestion, AI and RAG-assisted investigation, audited MCP tooling, role-based access, human-gated high-risk response, and immutable audit history.",
     tools: ["React", "TypeScript", "FastAPI", "PostgreSQL", "n8n V3.1", "Groq AI", "MCP", "RAG", "VirusTotal"],
