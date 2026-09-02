@@ -182,14 +182,11 @@ export default function Projects() {
     <section id="projects" className="relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(57,255,140,0.06),transparent_34%),radial-gradient(circle_at_85%_45%,rgba(168,85,247,0.05),transparent_28%)]" />
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading eyebrow="// SECURITY_PROJECT_ARSENAL" title="Security Projects" accent="neon" />
+        <SectionHeading eyebrow="// DEPLOYED_SECURITY_PRODUCTS" title="Security Projects" accent="neon" eyebrowAccent="signal" highlight />
 
-        <div className="mb-8 mt-4 flex flex-col gap-2 border-l-2 border-neon/55 pl-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-neon">Deployed Security Products</span>
-          <p className="max-w-2xl text-sm leading-relaxed text-white/48">
-            Production-facing platforms across SOC automation, RAG security testing, and agentic AI runtime defense.
-          </p>
-        </div>
+        <p className="mx-auto mb-8 mt-[-2rem] max-w-2xl text-center font-mono text-[11px] leading-relaxed tracking-wide text-volt/75">
+          SOC automation, RAG security testing, and agentic AI runtime defence.
+        </p>
 
         <div className="grid items-stretch gap-6 lg:grid-cols-3">
           {featuredProjects.map((project, index) => (
