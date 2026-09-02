@@ -254,29 +254,41 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "aegis-flow",
-    title: "AegisFlow — SOC Investigation & Response Automation",
+    id: "blueorch",
+    title: "BlueOrch — AI-Powered SOC Automation MVP",
     description:
-      "Built and deployed a full-stack SOC automation platform for alert ingestion, threat-intelligence enrichment, AI triage, RAG-assisted investigation, MCP security tools, human approval, and simulated response.",
-    tools: ["React", "TypeScript", "FastAPI", "n8n", "Groq API", "MCP", "RAG"],
+      "Built and deployed an end-to-end SOC automation MVP with telemetry ingestion, AI and RAG-assisted investigation, audited MCP tooling, role-based access, human-gated high-risk response, and immutable audit history.",
+    tools: ["React", "TypeScript", "FastAPI", "PostgreSQL", "n8n V3.1", "Groq AI", "MCP", "RAG", "VirusTotal"],
     image: "/projects/aegisflow-soc-automation.jpg",
-    github: "https://github.com/vasanth-void-0x/AegisFlow-SOC-Automation",
-    demo: "https://aegisflow-soc-automation.vercel.app/",
+    github: "https://github.com/vasanth-void-0x/BlueOrch-SOC-Automation",
+    demo: "https://blueorch-soc-automation.vercel.app/",
     caseStudy: {
-      category: "SOAR / SECURITY AUTOMATION",
-      objective: "Reduce repetitive Tier-1 triage work by connecting alert intake, normalization, enrichment, AI-assisted summarization, and analyst handoff.",
-      environment: ["n8n", "Webhook API", "Splunk", "Groq API", "Local security lab"],
-      scenario: "A security alert enters through a webhook and moves through a controlled workflow that prepares consistent investigation context for the analyst.",
-      collection: "The workflow receives structured alert fields, validates the payload, and prepares them for enrichment and downstream logging.",
-      investigation: ["Accepted alerts through an n8n webhook.", "Normalized important security fields.", "Added AI-assisted context while retaining the original evidence.", "Forwarded the structured result toward Splunk and analyst review."],
-      findings: ["Created a repeatable automation path instead of manual copy-and-paste triage.", "Kept AI output advisory and preserved the originating alert context."],
-      mitre: ["MITRE ATT&CK mapping can be added when supported by incoming evidence"],
-      response: ["Require analyst validation before containment.", "Record workflow failures and preserve original alert data for investigation."],
-      learnings: ["n8n workflow design", "Webhook integration", "SOC automation", "Human-in-the-loop AI", "Splunk ingestion"],
-      evidence: [{ src: "/projects/aegisflow-soc-automation.jpg", caption: "AegisFlow AI-assisted SOC automation workflow" }],
+      category: "MVP COMPLETE · SOAR / SECURITY AUTOMATION",
+      objective: "Demonstrate a safe end-to-end SOC workflow from Windows telemetry and alert intake through evidence-based investigation, analyst approval, simulated containment, and audit.",
+      environment: ["React", "TypeScript", "FastAPI", "PostgreSQL / SQLite", "n8n V3.1", "Groq AI", "RAG", "VirusTotal", "Remote MCP Gateway", "Windows Collector"],
+      scenario: "Suspicious Windows activity is collected and normalized into an incident, investigated through allowlisted MCP tools, and routed to a human when a high-risk response is proposed.",
+      collection: "A Windows collector and direct-log API provide authenticated telemetry ingestion, heartbeat reporting, batching, and disk-backed retry before incidents enter the workflow.",
+      investigation: [
+        "Normalized and claimed incidents through an n8n V3.1 workflow.",
+        "Used Groq and RAG to build an evidence-based investigation summary.",
+        "Invoked seven typed, allowlisted, timed, and audited MCP security tools.",
+        "Mapped supported behavior to MITRE ATT&CK and retained the original evidence."
+      ],
+      findings: [
+        "Implemented live React views for incidents, approvals, MCP history, audit events, and agent health.",
+        "Added Admin, Analyst, and Viewer role-based access.",
+        "Validated the backend with 131 automated tests."
+      ],
+      mitre: ["MITRE ATT&CK mapping is evidence-driven", "Suspicious PowerShell and ransomware-like test activity"],
+      response: [
+        "Require explicit human approval for high-risk actions.",
+        "Keep containment simulated in the MVP; no real firewall, EDR, or IAM system is contacted.",
+        "Record proposals, approvals, state changes, and outcomes in an immutable audit trail."
+      ],
+      learnings: ["SOC workflow orchestration", "Secure MCP integration", "Human-in-the-loop response", "RBAC", "React live data", "Production-safe AI automation"],
+      evidence: [{ src: "/projects/aegisflow-soc-automation.jpg", caption: "BlueOrch end-to-end SOC investigation and response workflow" }],
     },
-  },
-];
+  },];
 
 export const experience = [
   {
