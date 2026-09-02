@@ -122,7 +122,7 @@ const additionalProjects: Project[] = [
 
 const categoryById: Record<string, "Cybersecurity" | "AI Security"> = {
   itrap: "Cybersecurity",
-  "aegis-flow": "Cybersecurity",
+  blueorch: "Cybersecurity",
   "dfir-copilot": "Cybersecurity",
   "chain-guard": "Cybersecurity",
   "soc-alert-escalation": "Cybersecurity",
@@ -136,7 +136,7 @@ const currentById = Object.fromEntries(projects.map((project) => [project.id, pr
 const additionalById = Object.fromEntries(additionalProjects.map((project) => [project.id, project]));
 const projectById: Record<string, Project> = { ...currentById, ...additionalById };
 
-const featuredIds = ["aegis-flow", "ragexploit", "agent-shield"];
+const featuredIds = ["blueorch", "ragexploit", "agent-shield"];
 const engineeringIds = ["dfir-copilot", "itrap", "chain-guard"];
 const labIds = ["threat-hunting-dashboard", "soc-alert-escalation"];
 
@@ -199,7 +199,7 @@ export default function Projects() {
               index={index}
               category={categoryById[project.id]}
               variant="featured"
-              status={project.id === "aegis-flow" ? "SOC Flagship" : project.id === "ragexploit" ? "AI Security" : "Runtime Defense"}
+              status={project.id === "blueorch" ? "MVP Complete" : project.id === "ragexploit" ? "AI Security" : "Runtime Defense"}
               onCaseStudy={setSelected}
             />
           ))}
