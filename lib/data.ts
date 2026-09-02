@@ -255,7 +255,7 @@ export const projects: Project[] = [
   },
   {
     id: "blueorch",
-    title: "BlueOrch — SOC Automation MVP",
+    title: "BlueOrch — SOC Automation Platform",
     description:
       "Built and deployed an end-to-end SOC automation MVP with telemetry ingestion, AI and RAG-assisted investigation, audited MCP tooling, role-based access, human-gated high-risk response, and immutable audit history.",
     tools: ["React", "TypeScript", "FastAPI", "PostgreSQL", "n8n V3.1", "Groq AI", "MCP", "RAG", "VirusTotal"],
@@ -263,7 +263,7 @@ export const projects: Project[] = [
     github: "https://github.com/vasanth-void-0x/BlueOrch-SOC-Automation",
     demo: "https://blueorch-soc-automation.vercel.app/",
     caseStudy: {
-      category: "MVP COMPLETE · SOAR / SECURITY AUTOMATION",
+      category: "SOAR / SECURITY AUTOMATION",
       objective: "Demonstrate a safe end-to-end SOC workflow from Windows telemetry and alert intake through evidence-based investigation, analyst approval, simulated containment, and audit.",
       environment: ["React", "TypeScript", "FastAPI", "PostgreSQL / SQLite", "n8n V3.1", "Groq AI", "RAG", "VirusTotal", "Remote MCP Gateway", "Windows Collector"],
       scenario: "Suspicious Windows activity is collected and normalized into an incident, investigated through allowlisted MCP tools, and routed to a human when a high-risk response is proposed.",
