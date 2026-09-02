@@ -288,7 +288,8 @@ export const projects: Project[] = [
       learnings: ["SOC workflow orchestration", "Secure MCP integration", "Human-in-the-loop response", "RBAC", "React live data", "Production-safe AI automation"],
       evidence: [{ src: "/projects/aegisflow-soc-automation.jpg", caption: "BlueOrch end-to-end SOC investigation and response workflow" }],
     },
-  },];
+  },
+];
 
 export const experience = [
   {
