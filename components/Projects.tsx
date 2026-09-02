@@ -196,7 +196,7 @@ export default function Projects() {
               index={index}
               category={categoryById[project.id]}
               variant="featured"
-              status={project.id === "blueorch" ? "MVP Complete" : project.id === "ragexploit" ? "AI Security" : "Runtime Defense"}
+              status={project.id === "blueorch" ? "SOC Flagship" : project.id === "ragexploit" ? "AI Security" : "Runtime Defense"}
               onCaseStudy={setSelected}
             />
           ))}
